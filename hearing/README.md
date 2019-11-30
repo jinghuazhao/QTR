@@ -1,6 +1,8 @@
-# 30-11-2019 JHZ
+# setup
 
 ```bash
+# 30-11-2019 JHZ
+
 # on Bash
 iconv file.pcl -f UTF-8 -t ISO-8859-1 -c
 
