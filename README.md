@@ -1,2 +1,1 @@
-# QTR BiSeq and hearing
-
+# QTR BiSeq / hearing
