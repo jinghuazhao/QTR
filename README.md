@@ -1,4 +1,4 @@
-# QTR BiSeq / hearing
+# QTR
 
 ## INSTALLATION
 
