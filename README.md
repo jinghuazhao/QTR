@@ -9,7 +9,9 @@ git clone https://github.com/jinghuazhao/QTR
 
 ## NOTES
 
-### P values from `lmer()` -- documentation example
+### P values from `lmer()`
+
+This is illustrated with the documentation example,
 ```{r}
 require(lme4)
 f <- lmer(Reaction ~ Days + (Days | Subject), sleepstudy)
