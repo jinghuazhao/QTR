@@ -9,7 +9,7 @@ git clone https://github.com/jinghuazhao/QTR
 
 ## NOTES
 
-Linear mixed models -- documentation example
+### P values from Linear mixed models -- documentation example
 ```{r}
 require(lme4)
 f <- lmer(Reaction ~ Days + (Days | Subject), sleepstudy)
