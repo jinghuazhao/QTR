@@ -31,4 +31,4 @@ t <- with(s,coefficients)[,3]
 p <- 2*(pnorm(-abs(t)))
 p
 ```
-Consequently the effect of `Days` on `Reaction` became less pronounced after accounting for individual differences.
+Consequently, the effect of `Days` on `Reaction` became less pronounced after accounting for individual differences.
