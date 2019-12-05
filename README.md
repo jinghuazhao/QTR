@@ -11,4 +11,4 @@ git clone https://github.com/jinghuazhao/QTR
 
 ### P values from `lmer()`
 
-See [P.Rmd](P.Rmd) for desription and [P.pdf](P.pdf) (or [P.html](P.html)) for outputs.
+[P.pdf](P.pdf) (or [P.html](P.html)) contains outputs from the documentation example as in [P.Rmd](P.Rmd).
