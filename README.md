@@ -14,6 +14,8 @@ git clone https://github.com/jinghuazhao/QTR
 This is illustrated with the documentation example,
 ```{r}
 require(lme4)
+l <- lm(Reaction ~ Days, sleepstudy)
+summary(l)
 f <- lmer(Reaction ~ Days + (Days | Subject), sleepstudy)
 s <- summary(f)
 s
@@ -22,3 +24,4 @@ t <- with(s,coefficients)[,3]
 p <- 2*(1-pnorm(abs(t)))
 p
 ```
+We can see [P.html](P.html) for outputs.
