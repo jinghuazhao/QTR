@@ -450,11 +450,14 @@ p &lt;- 2*(pnorm(-abs(t)))
 p</code></pre>
 <pre><code>##   (Intercept)          Days 
 ## 3.851313e-297  1.281214e-11</code></pre>
+<p>Consequently, the effect of <code>Days</code> on <code>Reaction</code> became less pronounced after accounting for individual differences – as we saw the same estimate of effect but a larger standard error for <code>Days</code> in the linear mixed model compared to that in the linear regression model.</p>
+<p>The significane levels seemed strikingly different for the Intercept between the two models though, making us derive P values from <span class="math inline">\(t\)</span>-statistics</p>
+<pre class="r"><code>df</code></pre>
+<pre><code>## [1]   2 178   2</code></pre>
 <pre class="r"><code>pt &lt;-2*(pt(-abs(t),df[2]))
 pt</code></pre>
 <pre><code>##  (Intercept)         Days 
 ## 3.287918e-85 1.794531e-10</code></pre>
-<p>Consequently, the effect of <code>Days</code> on <code>Reaction</code> became less pronounced after accounting for individual differences – as we saw the same estimate of effect but a larger standard error for <code>Days</code> in the linear mixed model compared to that in the linear regression model.</p>
 </div>
 
 

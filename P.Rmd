@@ -33,8 +33,13 @@ class(with(s,coefficients))
 t <- with(s,coefficients)[,3]
 p <- 2*(pnorm(-abs(t)))
 p
-pt <-2*(pt(-abs(t),df[2]))
-pt
 ```
 Consequently, the effect of `Days` on `Reaction` became less pronounced after accounting for individual differences -- as
 we saw the same estimate of effect but a larger standard error for `Days` in the linear mixed model compared to that in the linear regression model.
+
+The significane levels seemed strikingly different for the Intercept between the two models though, making us derive P values from $t$-statistics
+```{r}
+df
+pt <-2*(pt(-abs(t),df[2]))
+pt
+```
