@@ -4,6 +4,9 @@ git add README.md
 git commit -m "README"
 git add BiSeq hearing
 git commit -m "Code"
+R --no-save <<END
+  rmarkdown::render("P.Rmd", c("html_document", "pdf_document"))
+END
 git add P.Rmd P.html P.pdf
 git commit -m "P values"
 git add st.sh
