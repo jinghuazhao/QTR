@@ -18,7 +18,7 @@ s
 names(s)
 class(with(s,coefficients))
 t <- with(s,coefficients)[,3]
-p <- 2*(1-pnorm(abs(t)))
+p <- 2*(pnorm(-abs(t)))
 p
 ```
 We can see that the P values on Days from two models does change after accounting for individual differences.

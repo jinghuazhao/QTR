@@ -438,10 +438,10 @@ s</code></pre>
 <pre class="r"><code>class(with(s,coefficients))</code></pre>
 <pre><code>## [1] &quot;matrix&quot;</code></pre>
 <pre class="r"><code>t &lt;- with(s,coefficients)[,3]
-p &lt;- 2*(1-pnorm(abs(t)))
+p &lt;- 2*(pnorm(-abs(t)))
 p</code></pre>
-<pre><code>## (Intercept)        Days 
-## 0.00000e+00 1.28122e-11</code></pre>
+<pre><code>##   (Intercept)          Days 
+## 3.851313e-297  1.281214e-11</code></pre>
 <p>We can see that the P values on Days from two models does change after accounting for individual differences.</p>
 
 
