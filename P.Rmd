@@ -21,4 +21,4 @@ t <- with(s,coefficients)[,3]
 p <- 2*(1-pnorm(abs(t)))
 p
 ```
-We can see that the P values from two models are very close, giving a sense of what they do.
+We can see that the P values on Days from two models does change after accounting for individual differences.
