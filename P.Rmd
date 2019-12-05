@@ -1,9 +1,8 @@
 ## Comparison of P values from linear and linear mixed models
 
-This is illustrated with the documentation example.
-
+This is provided by the `lmerTest` package as illustrated fully with the documentation example here.
 ```{r}
-require(lme4)
+require(lmerTest)
 boxplot(Reaction~Days, data=sleepstudy, main="Reaction by Days",
         xlab="Days", ylab="Reaction", col="blue", border="black")
 ```
@@ -13,11 +12,8 @@ l <- lm(Reaction ~ Days, sleepstudy)
 s <- summary(l)
 s
 names(s)
-class(s)
-round(sqrt(s$fstatistic[1]),3)
-df <- with(s,df)
 ```
-the F statistics is simply $t^2$. Maybe it is worthwhile to examine the effect of `Subject` as well; from
+Now the `Subject` effect is treated as a random; from
 
 ```{r}
 boxplot(Reaction~Subject, data=sleepstudy, main="Reaction by Subject",
@@ -25,21 +21,17 @@ boxplot(Reaction~Subject, data=sleepstudy, main="Reaction by Subject",
 ```
 it is more approriate to fit a random effect model
 ```{r}
-f <- lmer(Reaction ~ Days + (Days | Subject), sleepstudy)
+f <- lme4::lmer(Reaction ~ Days + (Days | Subject), sleepstudy)
 s <- summary(f)
 s
 names(s)
-class(with(s,coefficients))
-t <- with(s,coefficients)[,3]
-p <- 2*(pnorm(-abs(t)))
-p
 ```
-Consequently, the effect of `Days` on `Reaction` became less pronounced after accounting for individual differences -- as
-we saw the same estimate of effect but a larger standard error for `Days` in the linear mixed model compared to that in the linear regression model.
+We saw the same estimate of effect but a larger standard error for `Days` in the linear mixed model compared to that in the linear regression model.
 
-The significane levels seemed strikingly different for the Intercept between the two models though making us derive P values from $t$-statistics
 ```{r}
-df
-pt <-2*(pt(-abs(t),df[2]))
-pt
+m <- lmerTest::lmer(Reaction ~ Days + (Days | Subject), sleepstudy)
+class(m)
+s <-summary(m)
+names(s)
+with(s,coefficients)[,5]
 ```
