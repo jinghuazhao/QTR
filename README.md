@@ -9,6 +9,6 @@ git clone https://github.com/jinghuazhao/QTR
 
 ## NOTES
 
-### P values from `lmer()`
+### P values from linear mixed model
 
 [P.pdf](P.pdf) (or [P.html](P.html)) contains outputs from the documentation example as in [P.Rmd](P.Rmd).
