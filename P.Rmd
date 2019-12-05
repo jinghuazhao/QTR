@@ -4,7 +4,7 @@ This is illustrated with the documentation example.
 require(lme4)
 boxplot(Reaction~Days, data=sleepstudy, main="Reaction by Days", xlab="Days", ylab="Reaction", col="blue", border="brown" )
 ```
-We first run a simple linear regression,
+We see a trend of `Reaction` by `Days`, so it is reasonable to fit a simple linear regression,
 ```{r}
 l <- lm(Reaction ~ Days, sleepstudy)
 s <- summary(l)
@@ -13,12 +13,12 @@ names(s)
 class(s)
 round(sqrt(s$fstatistic[1]),3)
 ```
-the F statistics is simply $t^2$. Next we examine the effect of `Subject`
+the F statistics is simply $t^2$. Maybe it is worthwhile to we examine the effect of `Subject` as well; from
 
 ```{r}
 boxplot(Reaction~Subject, data=sleepstudy, main="Reaction by Subject", xlab="Subject", ylab="Reaction", col="orange", border="brown" )
 ```
-followed by a random effect model
+it is more approriate to fit a random effect model
 ```{r}
 f <- lmer(Reaction ~ Days + (Days | Subject), sleepstudy)
 s <- summary(f)
@@ -29,4 +29,4 @@ t <- with(s,coefficients)[,3]
 p <- 2*(pnorm(-abs(t)))
 p
 ```
-We can see that the P value on `Days` became larger after accounting for individual differences.
+Consequently the effect of `Days` on `Reaction` became less pronounced after accounting for individual differences.
