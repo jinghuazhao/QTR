@@ -4,7 +4,7 @@ This is illustrated with the documentation example.
 
 ```{r}
 require(lme4)
-boxplot(Reaction~Days, data=sleepstudy, main="Reaction by Days", xlab="Days", ylab="Reaction", col="blue", border="brown" )
+boxplot(Reaction~Days, data=sleepstudy, main="Reaction by Days", xlab="Days", ylab="Reaction", col="blue", border="black" )
 ```
 We see a trend of `Reaction` by `Days`, so it is reasonable to fit a simple linear regression,
 ```{r}
