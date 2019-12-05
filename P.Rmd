@@ -5,6 +5,7 @@ We first run a simple linear regression,
 require(lme4)
 l <- lm(Reaction ~ Days, sleepstudy)
 s <- summary(l)
+s
 names(s)
 class(s)
 round(sqrt(s$fstatistic[1]),3)
