@@ -1,4 +1,4 @@
-## Comparison of P values from linear and linear mixed regressions
+## Comparison of P values from linear and linear mixed models
 
 This is illustrated with the documentation example.
 
