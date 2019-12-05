@@ -4,7 +4,7 @@ git add README.md
 git commit -m "README"
 git add BiSeq hearing
 git commit -m "Code"
-git add P.Rmd P.html
+git add P.Rmd P.html P.pdf
 git commit -m "P values"
 git add st.sh
 git commit -m "st.sh"
