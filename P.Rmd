@@ -16,7 +16,7 @@ round(sqrt(s$fstatistic[1]),3)
 the F statistics is simply $t^2$. Next we examine the effect of `Subject`
 
 ```{r}
-boxplot(Days~Subject, data=sleepstudy, main="Days by Subject", xlab="Subject", ylab="Days", col="orange", border="brown" )
+boxplot(Reaction~Subject, data=sleepstudy, main="Reaction by Subject", xlab="Subject", ylab="Reaction", col="orange", border="brown" )
 ```
 followed by a random effect model
 ```{r}
