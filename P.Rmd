@@ -4,8 +4,8 @@ This is illustrated with the documentation example.
 
 ```{r}
 require(lme4)
-boxplot(Reaction~Days, data=sleepstudy, main="Reaction by Days", xlab="Days", ylab="Reaction",
-        col="blue", border="black" )
+boxplot(Reaction~Days, data=sleepstudy, main="Reaction by Days",
+        xlab="Days", ylab="Reaction", col="blue", border="black")
 ```
 We see a trend of `Reaction` by `Days`, so it is reasonable to fit a simple linear regression,
 ```{r}
@@ -19,8 +19,8 @@ round(sqrt(s$fstatistic[1]),3)
 the F statistics is simply $t^2$. Maybe it is worthwhile to examine the effect of `Subject` as well; from
 
 ```{r}
-boxplot(Reaction~Subject, data=sleepstudy, main="Reaction by Subject", xlab="Subject", ylab="Reaction",
-        col="orange", border="brown" )
+boxplot(Reaction~Subject, data=sleepstudy, main="Reaction by Subject",
+        xlab="Subject", ylab="Reaction", col="orange", border="brown")
 ```
 it is more approriate to fit a random effect model
 ```{r}
