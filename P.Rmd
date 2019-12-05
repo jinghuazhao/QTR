@@ -1,6 +1,7 @@
-## Comparison of P values from linear and linear mixed models
+## P values from linear and linear mixed models
 
-This is provided by the `lmerTest` package as illustrated fully with the documentation example here.
+As its name implies, P values are provided by the `lmerTest` package, as will be illustrated with
+the documentation example here.
 ```{r}
 require(lmerTest)
 boxplot(Reaction~Days, data=sleepstudy, main="Reaction by Days",
@@ -13,7 +14,7 @@ s <- summary(l)
 s
 names(s)
 ```
-Now the `Subject` effect is treated as a random; from
+Consider now the `Subject` effect. From
 
 ```{r}
 boxplot(Reaction~Subject, data=sleepstudy, main="Reaction by Subject",
@@ -26,12 +27,13 @@ s <- summary(f)
 s
 names(s)
 ```
-We saw the same estimate of effect but a larger standard error for `Days` in the linear mixed model compared to that in the linear regression model.
-
+We saw the same estimate of effect but a larger standard error for `Days` in the linear mixed model compared to
+that in the linear regression model. We then use `lmer` from `lmerTest`.
 ```{r}
 m <- lmerTest::lmer(Reaction ~ Days + (Days | Subject), sleepstudy)
 class(m)
 s <-summary(m)
 names(s)
-with(s,coefficients)[,5]
+with(s,coefficients)[2,5]
 ```
+Compared to its counterpart in `lme4`, `lmerTest` provides P value.
