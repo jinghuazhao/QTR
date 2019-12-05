@@ -4,16 +4,20 @@ We first run a simple linear regression,
 ```{r}
 require(lme4)
 l <- lm(Reaction ~ Days, sleepstudy)
-summary(l)
+s <- summary(l)
+names(s)
+class(s)
+round(sqrt(s$fstatistic[1]),3)
 ```
-Paying attention to the P values and also the F statistics which is simply $t^2$. Next we turn to the mixed model containing a random effect
+the F statistics which is simply $t^2$. Next we turn to the mixed model containing a random effect
 ```{r}
 f <- lmer(Reaction ~ Days + (Days | Subject), sleepstudy)
 s <- summary(f)
 s
+names(s)
 class(with(s,coefficients))
 t <- with(s,coefficients)[,3]
 p <- 2*(1-pnorm(abs(t)))
 p
 ```
-So the P values are very close, giving a sense of what both models are about.
+We can see that the P values from two models are very close, giving a sense of what they do.
