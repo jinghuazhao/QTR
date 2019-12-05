@@ -15,6 +15,7 @@ s
 names(s)
 class(s)
 round(sqrt(s$fstatistic[1]),3)
+df <- with(s,df)
 ```
 the F statistics is simply $t^2$. Maybe it is worthwhile to examine the effect of `Subject` as well; from
 
@@ -32,6 +33,8 @@ class(with(s,coefficients))
 t <- with(s,coefficients)[,3]
 p <- 2*(pnorm(-abs(t)))
 p
+pt <-2*(pt(-abs(t),df[2]))
+pt
 ```
 Consequently, the effect of `Days` on `Reaction` became less pronounced after accounting for individual differences -- as
 we saw the same estimate of effect but a larger standard error for `Days` in the linear mixed model compared to that in the linear regression model.
