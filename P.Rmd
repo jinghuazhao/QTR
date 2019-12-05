@@ -1,8 +1,11 @@
 This is illustrated with the documentation example.
 
-We first run a simple linear regression,
 ```{r}
 require(lme4)
+boxplot(Reaction~Days, data=sleepstudy, main="Reaction by Days", xlab="Days", ylab="Reaction", col="blue", border="brown" )
+```
+We first run a simple linear regression,
+```{r}
 l <- lm(Reaction ~ Days, sleepstudy)
 s <- summary(l)
 s
@@ -13,7 +16,7 @@ round(sqrt(s$fstatistic[1]),3)
 the F statistics is simply $t^2$. Next we examine the effect of `Subject`
 
 ```{r}
-boxplot(Reaction~Days, data=sleepstudy, main="Boxplots by Subject", xlab="Subject", ylab="Reaction", col="orange", border="brown" )
+boxplot(Days~Subject, data=sleepstudy, main="Days by Subject", xlab="Subject", ylab="Days", col="orange", border="brown" )
 ```
 followed by a random effect model
 ```{r}
