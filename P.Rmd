@@ -33,4 +33,5 @@ t <- with(s,coefficients)[,3]
 p <- 2*(pnorm(-abs(t)))
 p
 ```
-Consequently, the effect of `Days` on `Reaction` became less pronounced after accounting for individual differences -- as we saw a larger standard error for `Days`.
+Consequently, the effect of `Days` on `Reaction` became less pronounced after accounting for individual differences -- as
+we saw the same estimate of effect but a larger standard error for `Days` in the linear mixed model compared to that in the linear regression model.
