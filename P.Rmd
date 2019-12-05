@@ -21,4 +21,4 @@ t <- with(s,coefficients)[,3]
 p <- 2*(pnorm(-abs(t)))
 p
 ```
-We can see that the P values on `Days` from two models did change after accounting for individual differences.
+We can see that the P value on `Days` became larger after accounting for individual differences.
