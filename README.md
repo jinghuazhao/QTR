@@ -17,8 +17,8 @@ require(lme4)
 f <- lmer(Reaction ~ Days + (Days | Subject), sleepstudy)
 s <- summary(f)
 s
-t <- with(s,coefficients)[,3]
 class(with(s,coefficients))
+t <- with(s,coefficients)[,3]
 p <- 2*(1-pnorm(abs(t)))
 p
 ```
