@@ -11,17 +11,4 @@ git clone https://github.com/jinghuazhao/QTR
 
 ### P values from `lmer()`
 
-This is illustrated with the documentation example,
-```{r}
-require(lme4)
-l <- lm(Reaction ~ Days, sleepstudy)
-summary(l)
-f <- lmer(Reaction ~ Days + (Days | Subject), sleepstudy)
-s <- summary(f)
-s
-class(with(s,coefficients))
-t <- with(s,coefficients)[,3]
-p <- 2*(1-pnorm(abs(t)))
-p
-```
-We can see [P.html](P.html) for outputs.
+See [P.Rmd](P.Rmd) for desription and [P.pdf](P.pdf)/[P.html](P.html) for outputs.
