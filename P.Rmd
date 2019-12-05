@@ -10,7 +10,12 @@ names(s)
 class(s)
 round(sqrt(s$fstatistic[1]),3)
 ```
-the F statistics is simply $t^2$. Next we turn to the mixed model containing a random effect
+the F statistics is simply $t^2$. Next we examine the effect of `Subject`
+
+```{r}
+boxplot(Reaction~Days, data=sleepstudy, main="Boxplots by Subject", xlab="Subject", ylab="Reaction", col="orange", border="brown" )
+```
+followed by a random effect model
 ```{r}
 f <- lmer(Reaction ~ Days + (Days | Subject), sleepstudy)
 s <- summary(f)
