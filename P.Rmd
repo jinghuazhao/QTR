@@ -10,7 +10,7 @@ names(s)
 class(s)
 round(sqrt(s$fstatistic[1]),3)
 ```
-the F statistics which is simply $t^2$. Next we turn to the mixed model containing a random effect
+the F statistics is simply $t^2$. Next we turn to the mixed model containing a random effect
 ```{r}
 f <- lmer(Reaction ~ Days + (Days | Subject), sleepstudy)
 s <- summary(f)
