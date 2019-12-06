@@ -2,7 +2,7 @@
 
 As its name implies, P values are provided by the `lmerTest` package, as will be illustrated with
 the documentation example here.
-```{r}
+```{r message=FALSE}
 require(lmerTest)
 boxplot(Reaction~Days, data=sleepstudy, main="Reaction by Days",
         xlab="Days", ylab="Reaction", col="blue", border="black")
