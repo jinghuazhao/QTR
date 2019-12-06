@@ -24,8 +24,8 @@ boxplot(Reaction~Subject, data=sleepstudy, main="Reaction by Subject",
 
 it is more approriate to fit a random effect model
 ```{r}
-f <- lme4::lmer(Reaction ~ Days + (Days | Subject), sleepstudy)
-s <- summary(f)
+r <- lme4::lmer(Reaction ~ Days + (Days | Subject), sleepstudy)
+s <- summary(r)
 s
 names(s)
 ```
@@ -39,4 +39,4 @@ s
 names(s)
 with(s,coefficients)[2,5]
 ```
-Compared to its counterpart in `lme4`, `lmerTest` provides P value.
+We have extracted P value for `Days`.
