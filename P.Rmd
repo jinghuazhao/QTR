@@ -25,8 +25,8 @@ boxplot(Reaction~Subject, data=sleepstudy, main="Reaction by Subject",
         xlab="Subject", ylab="Reaction", col="orange", border="brown")
 ```
 
-suggesting it is more approriate to fit a random effect model, in the sense that the `Subject` effect is
-purely a random phenomenon in the association of interest:
+suggesting it is more approriate to fit a random effect model, in the sense that the `Subject` effect
+randomly plays into the association of interest:
 
 ```{r}
 r <- lme4::lmer(Reaction ~ Days + (Days | Subject), sleepstudy)
