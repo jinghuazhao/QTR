@@ -8,6 +8,7 @@ module load gcc/5
 R --no-save <<END
   rmarkdown::render("P.Rmd", c("html_document", "pdf_document"))
 END
+module unload gcc/5
 git add P.Rmd P.html P.pdf
 git commit -m "P values"
 git add st.sh
