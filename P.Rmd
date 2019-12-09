@@ -1,6 +1,6 @@
 ## P values from linear and linear mixed models
 
-As its name implies, P values are provided by the `lmerTest` package, as will be illustrated with
+As its name implies, P values are provided by the `lmerTest` package, which will be illustrated with
 the documentation example here.
 ```{r message=FALSE}
 require(lmerTest)
@@ -8,21 +8,24 @@ boxplot(Reaction~Days, data=sleepstudy, main="Reaction by Days",
         xlab="Days", ylab="Reaction", col="blue", border="black")
 ```
 
-We see a trend of `Reaction` by `Days`, so it is reasonable to fit a simple linear regression,
+We see a trend of `Reaction` by `Days`, so it is reasonable to fit a linear regression,
 ```{r}
 l <- lm(Reaction ~ Days, sleepstudy)
 s <- summary(l)
 s
 names(s)
 ```
-Consider the `Subject` effect. From
+showing significant association between `Reaction` and `Days`. We now turn to the following question:
+how does the association alter after accounting for individual differences? The impact of `Subject` effect can
+be revealed as follows,
 
 ```{r}
 boxplot(Reaction~Subject, data=sleepstudy, main="Reaction by Subject",
         xlab="Subject", ylab="Reaction", col="orange", border="brown")
 ```
 
-it is more approriate to fit a random effect model
+suggesting it is more approriate to fit a random effect model:
+
 ```{r}
 r <- lme4::lmer(Reaction ~ Days + (Days | Subject), sleepstudy)
 s <- summary(r)
