@@ -8,7 +8,8 @@ boxplot(Reaction~Days, data=sleepstudy, main="Reaction by Days",
         xlab="Days", ylab="Reaction", col="blue", border="black")
 ```
 
-We see a trend of `Reaction` by `Days`, so it is reasonable to fit a linear regression,
+We see a trend of `Reaction` by `Days`, so it is reasonable to fit a linear regression to quantify the
+relationship observed,
 ```{r}
 l <- lm(Reaction ~ Days, sleepstudy)
 s <- summary(l)
@@ -24,7 +25,8 @@ boxplot(Reaction~Subject, data=sleepstudy, main="Reaction by Subject",
         xlab="Subject", ylab="Reaction", col="orange", border="brown")
 ```
 
-suggesting it is more approriate to fit a random effect model:
+suggesting it is more approriate to fit a random effect model, in the sense that the `Subject` effect is
+purely a random phenomenon in the association of interest:
 
 ```{r}
 r <- lme4::lmer(Reaction ~ Days + (Days | Subject), sleepstudy)
@@ -42,4 +44,4 @@ s
 names(s)
 with(s,coefficients)[2,5]
 ```
-We have extracted P value for `Days`.
+The P value for `Days` differs by orders of magnitude from that from a linear regression.
