@@ -1,14 +1,18 @@
-# 9-12-2019 JHZ
+# 6-7-2020 JHZ
 
-git add README.md
-git commit -m "README"
-git add BiSeq hearing
-git commit -m "Code"
+function P()
+{
 module load gcc/5
 R --no-save <<END
   rmarkdown::render("P.Rmd", c("html_document", "pdf_document"))
 END
 module unload gcc/5
+}
+
+git add README.md
+git commit -m "README"
+git add BiSeq hearing HUA_methylation_analysis/scripts*
+git commit -m "Code"
 git add P.Rmd P.html P.pdf
 git commit -m "P values"
 git add st.sh
