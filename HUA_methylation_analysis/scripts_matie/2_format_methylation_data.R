@@ -24,7 +24,7 @@ bsraw_matrix <- function(filename) {
 	saveRDS(mbeta, file_beta)
 }
 
-bsraw_matrix('rrbs_clean_data/rrbs.clust.lim.RDS')
+bsraw_matrix('rrbs_clean_data_matie/rrbs.clust.lim.RDS')
 
 
 bsrel_matrix <- function(filename) {
@@ -45,4 +45,4 @@ bsrel_matrix <- function(filename) {
 	saveRDS(mbeta, file_beta)
 }
 
-bsrel_matrix('rrbs_clean_data/predictedMeth.RDS')
+bsrel_matrix('rrbs_clean_data_matie/predictedMeth.RDS')

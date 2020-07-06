@@ -3,8 +3,8 @@ getwd()
 
 options(stringsAsFactors = FALSE)
 
-datafile <- 'rrbs_clean_data/predictedMeth_beta.RDS'
-rangefile <- 'rrbs_clean_data/predictedMeth_range.RDS'
+datafile <- 'rrbs_clean_data_lmer/predictedMeth_beta.RDS'
+rangefile <- 'rrbs_clean_data_lmer/predictedMeth_range.RDS'
 
 betav <- readRDS(datafile)
 rangev <- readRDS(rangefile)
@@ -35,13 +35,13 @@ mv <- as.data.frame(mv)
 rownames(mv) <- rownamesmv
 colnames(mv) <- colnamesmv
 
-saveRDS(mv, 'rrbs_clean_data/predictedMeth_m.RDS')
+saveRDS(mv, 'rrbs_clean_data_lmer/predictedMeth_m.RDS')
 
 options(stringsAsFactors = FALSE)
 mvtable <- mv
 mvtable <- data.frame(ID = rownames(mvtable), mvtable)
 
-refactor_datafile <- "rrbs_clean_data/refactor_mv.txt"
+refactor_datafile <- "rrbs_clean_data_lmer/refactor_mv.txt"
 write.table(mvtable, refactor_datafile, quote = FALSE, sep = '\t')
 
 source("refactor_modify.R")
@@ -50,4 +50,4 @@ refactor_obj <- refactor(refactor_datafile,k)
 PCs <- as.data.frame(refactor_obj$standard_pca)
 rownames(PCs) <- colnamesmv
 
-saveRDS(PCs,  "rrbs_clean_data/refactor_obj.RDS")
+saveRDS(PCs,  "rrbs_clean_data_lmer/refactor_obj.RDS")

@@ -3,11 +3,11 @@ getwd()
 
 options(stringsAsFactors = FALSE)
 
-resultname <- 'rrbs_clean_data/lmer.RDS'
+resultname <- 'rrbs_clean_data_lmer/lmer.RDS'
 
 result <- readRDS(resultname)
 
-range_df <- readRDS('rrbs_clean_data/predictedMeth_range_quality.RDS')
+range_df <- readRDS('rrbs_clean_data_lmer/predictedMeth_range_quality.RDS')
 range_df$unit <- rownames(range_df)
 
 library(plyr)
@@ -15,7 +15,7 @@ result <- join(result, range_df, by = 'unit', type = "left")
 result$padj <- p.adjust(result$`SUA:Pr(>|t|)`, method = 'fdr')
 result$seqnames <- as.character(result$seqnames)
 result <- result[(result$seqnames %in% paste0('chr', 1:22)), ]
-saveRDS(result, "rrbs_clean_data/result_range.RDS")
+saveRDS(result, "rrbs_clean_data_lmer/result_range.RDS")
 
 
 library(openxlsx)
@@ -25,8 +25,8 @@ sigresult <- sigresult[sigresult$'SUA:Pr(>|t|)' < 0.05, ]
 sigresult <- sigresult[order(sigresult$'SUA:Pr(>|t|)'), ]
 sigresult <- sigresult[, c('unit', 'seqnames', 'start', 'SUA:Pr(>|t|)', 'SUA:Estimate', 'padj')]
 colnames(sigresult) <- c('id_row_number', 'Chromosome', 'Position', 'pvalue', 'effectsize', 'padj')
-saveRDS(sigresult, file = 'rrbs_clean_data/sigresult.RDS')
-write.xlsx(sigresult, file = 'rrbs_clean_data/sigresult.xlsx')
+saveRDS(sigresult, file = 'rrbs_clean_data_lmer/sigresult.RDS')
+write.xlsx(sigresult, file = 'rrbs_clean_data_lmer/sigresult.xlsx')
 
 p_cut_v <- c(0.001, 0.01, 0.05, 1)
 
@@ -66,8 +66,8 @@ cmplotdata$Chromosome <- as.factor(as.numeric(cmplotdata$Chromosome))
 CMplot(cmplotdata,plot.type="c",chr.labels=paste("chr",c(1:22),sep=""),r=0.4,cir.legend=TRUE,
        outward=TRUE,cir.legend.col="black",cir.chr.h=0.3,chr.den.col="black",file="pdf", file.output = TRUE,
        memo="",dpi=600,verbose=TRUE)
-file.rename('Circular-Manhattan.p-value.pdf', 'rrbs_clean_data/Circular-Manhattan_p-value.pdf')
+file.rename('Circular-Manhattan.p-value.pdf', 'rrbs_clean_data_lmer/Circular-Manhattan_p-value.pdf')
 CMplot(cmplotdata,plot.type="q",threshold=1e-6,
        signal.pch=19,signal.cex=1,box=FALSE,multracks=
          FALSE,memo="",dpi=600,file = "pdf",file.output=TRUE,verbose=TRUE)
-file.rename('QQplot.p-value.pdf', 'rrbs_clean_data/QQplot_p-value.pdf')
+file.rename('QQplot.p-value.pdf', 'rrbs_clean_data_lmer/QQplot_p-value.pdf')

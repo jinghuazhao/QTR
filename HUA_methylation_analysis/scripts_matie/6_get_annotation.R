@@ -1,6 +1,6 @@
 setwd("/media/data/project/HUA_methylation_analysis_matie/")
 getwd()
-range_result_name <- 'rrbs_clean_data/result_range.RDS'
+range_result_name <- 'rrbs_clean_data_matie/result_range.RDS'
 
 # if (!requireNamespace("BiocManager", quietly = TRUE))
 #   install.packages("BiocManager")
@@ -77,24 +77,24 @@ result_anno_csv <- gsub('.RDS', paste0('_', id_type, '.csv'), range_result_name)
 write.csv(result_anno, file = result_anno_csv, row.names = FALSE)
 
 
-sigresult <- readRDS('rrbs_clean_data/sigresult.RDS')
-anno <- readRDS('rrbs_clean_data/result_range_ensembl_gene_id.RDS')
+sigresult <- readRDS('rrbs_clean_data_matie/sigresult.RDS')
+anno <- readRDS('rrbs_clean_data_matie/result_range_ensembl_gene_id.RDS')
 sigresult <- sigresult[, c('unit', 'seqnames', 'start', 'SUA:Pr(>|t|)', 'SUA:Estimate', 'padj')]
 colnames(sigresult) <- c('unit', 'Chromosome', 'Position', 'pvalue', 'effectsize', 'padj')
 anno <- anno[, c('unit', "ensembl_gene_id", "hgnc_symbol", "up_bp", "up_ensembl_gene_id", "up_hgnc_symbol","down_bp", "down_ensembl_gene_id", "down_hgnc_symbol" )]
 library(plyr)
 sigresult <- join(sigresult, anno)
-write.csv(sigresult, file = "rrbs_clean_data/sigresult_anno.csv", row.names = FALSE)
-write.xlsx(sigresult, file = "rrbs_clean_data/sigresult_anno.xlsx", row.names = FALSE)
+write.csv(sigresult, file = "rrbs_clean_data_matie/sigresult_anno.csv", row.names = FALSE)
+write.xlsx(sigresult, file = "rrbs_clean_data_matie/sigresult_anno.xlsx", row.names = FALSE)
 
 
-sigresult <- readRDS('rrbs_clean_data/sigresult.RDS')
+sigresult <- readRDS('rrbs_clean_data_matie/sigresult.RDS')
 #Note:change the "entrezgene" to "entrezgene_id"
-anno <- readRDS('rrbs_clean_data/result_range_entrezgene_id.RDS')
+anno <- readRDS('rrbs_clean_data_matie/result_range_entrezgene_id.RDS')
 sigresult <- sigresult[, c('unit', 'seqnames', 'start', 'SUA:Pr(>|t|)', 'SUA:Estimate', 'padj')]
 colnames(sigresult) <- c('unit', 'Chromosome', 'Position', 'pvalue', 'effectsize', 'padj')
 anno <- anno[, c('unit', "entrezgene_id")]
 library(plyr)
 sigresult <- join(sigresult, anno)
-write.csv(sigresult, file = "rrbs_clean_data/sigresult_anno_entrezgene.csv", row.names = FALSE)
-write.xlsx(sigresult, file = "rrbs_clean_data/sigresult_anno_entrezgene.xlsx", row.names = FALSE)
+write.csv(sigresult, file = "rrbs_clean_data_matie/sigresult_anno_entrezgene.csv", row.names = FALSE)
+write.xlsx(sigresult, file = "rrbs_clean_data_matie/sigresult_anno_entrezgene.xlsx", row.names = FALSE)

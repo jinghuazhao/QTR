@@ -6,8 +6,8 @@ library(doMC)
 doMC::registerDoMC(cores = 14)
 
 phenfile <- 'SUA_sample_information.xlsx'
-datafile <- 'rrbs_clean_data/predictedMeth_m.RDS'
-refactor_obj_name <- 'rrbs_clean_data/refactor_obj.RDS'
+datafile <- 'rrbs_clean_data_matie/predictedMeth_m.RDS'
+refactor_obj_name <- 'rrbs_clean_data_matie/refactor_obj.RDS'
 
 library(openxlsx)
 phen <- read.xlsx(phenfile)
@@ -77,5 +77,5 @@ result <- rbindlist(alply(data_d, 1, function(obs) {
 
 result <- as.data.frame(result)
 
-saveRDS(result, 'rrbs_clean_data/matie.RDS')
+saveRDS(result, 'rrbs_clean_data_matie/matie.RDS')
 

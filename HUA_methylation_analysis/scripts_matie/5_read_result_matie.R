@@ -3,13 +3,13 @@ getwd()
 
 options(stringsAsFactors = FALSE)
 
-resultname <- 'rrbs_clean_data/matie.RDS'
+resultname <- 'rrbs_clean_data_matie/matie.RDS'
 
 result <- readRDS(resultname)
 result$unit <- as.character(result$unit)
 colnames(result)[2] <- "SUA:Pr(>|t|)"
 colnames(result)[6] <- "SUA:Estimate"
-range <- readRDS('rrbs_clean_data/predictedMeth_range.RDS')
+range <- readRDS('rrbs_clean_data_matie/predictedMeth_range.RDS')
 
 range_df <- as.data.frame(range)
 range_df$unit <- rownames(range_df)
@@ -18,7 +18,7 @@ range_df$unit <- paste0('r', range_df$unit)
 library(plyr)
 result <- join(result, range_df, by = 'unit')
 result$padj <- p.adjust(result$`SUA:Pr(>|t|)`, method = 'fdr')
-saveRDS(result, "rrbs_clean_data/result_range.RDS")
+saveRDS(result, "rrbs_clean_data_matie/result_range.RDS")
 
 
 
@@ -70,11 +70,11 @@ library(ggplot2)
 CMplot(cmplotdata,plot.type="c",chr.labels=paste("chr",c(1:22,"X"),sep=""),r=0.4,cir.legend=TRUE,
        outward=TRUE,cir.legend.col="black",cir.chr.h=0.3,chr.den.col="black",file="pdf", file.output = TRUE,
        memo="",dpi=600,verbose=TRUE)
-file.rename('Circular-Manhattan.p-value.pdf', 'rrbs_clean_data/Circular-Manhattan_p-value.pdf')
+file.rename('Circular-Manhattan.p-value.pdf', 'rrbs_clean_data_matie/Circular-Manhattan_p-value.pdf')
 CMplot(cmplotdata,plot.type="q",threshold=1e-6,
        signal.pch=19,signal.cex=1,box=FALSE,multracks=
          FALSE,memo="",dpi=600,file = "pdf",file.output=TRUE,verbose=TRUE)
-file.rename('QQplot.p-value.pdf', 'rrbs_clean_data/QQplot_p-value.pdf')
+file.rename('QQplot.p-value.pdf', 'rrbs_clean_data_matie/QQplot_p-value.pdf')
 # ggplotdata <- result[result$seqnames %in% paste0('chr', 1:22), ]
 # ggplotdata <- ggplotdata[, c('unit', 'seqnames', 'start', 'cognitive_function_score:Pr(>|t|)', 'cognitive_function_score:Estimate')]
 # colnames(ggplotdata) <- c('SNP', 'Chromosome', 'Position', 'pvalue', 'effectsize')
@@ -93,9 +93,9 @@ sigresult <- result[result$seqnames %in% paste0('chr', 1:22), ]
 sigresult <- sigresult[, c('unit', 'seqnames', 'start', 'end', 'SUA:Pr(>|t|)', 'SUA:Estimate', 'padj')]
 sigresult <- sigresult[sigresult$'SUA:Pr(>|t|)' < 0.05, ]
 sigresult <- sigresult[order(sigresult$'SUA:Pr(>|t|)'), ]
-saveRDS(sigresult, file = 'rrbs_clean_data/sigresult.RDS')
+saveRDS(sigresult, file = 'rrbs_clean_data_matie/sigresult.RDS')
 sigresult <- sigresult[, c('unit', 'seqnames', 'start', 'SUA:Pr(>|t|)', 'SUA:Estimate', 'padj')]
 colnames(sigresult) <- c('id_row_number', 'Chromosome', 'Position', 'pvalue', 'effectsize', 'padj')
-write.csv(sigresult, file = "rrbs_clean_data/sigresult.csv", row.names = FALSE)
+write.csv(sigresult, file = "rrbs_clean_data_matie/sigresult.csv", row.names = FALSE)
 
-write.xlsx(sigresult, file = "rrbs_clean_data/sigresult.xlsx", row.names = FALSE)
+write.xlsx(sigresult, file = "rrbs_clean_data_matie/sigresult.xlsx", row.names = FALSE)

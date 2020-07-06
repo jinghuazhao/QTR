@@ -1,8 +1,8 @@
 setwd("/media/data/project/HUA_methylation_analysis_matie/")
 getwd()
 
-datafile <- 'rrbs_clean_data/predictedMeth_beta.RDS'
-rangefile <- 'rrbs_clean_data/predictedMeth_range.RDS'
+datafile <- 'rrbs_clean_data_matie/predictedMeth_beta.RDS'
+rangefile <- 'rrbs_clean_data_matie/predictedMeth_range.RDS'
 betav <- readRDS(datafile)
 rangev <- readRDS(rangefile)
 #qualityb <- (rowMeans(betav, na.rm = TRUE) < 0.05) | (rowSums(is.na(betav)) > 4)
@@ -30,7 +30,7 @@ options(stringsAsFactors = FALSE)
 mvtable <- as.data.frame(mv)
 mvtable <- data.frame(ID = rownames(mvtable), mvtable)
 
-datafile <- "rrbs_clean_data/refactor_mv.txt"
+datafile <- "rrbs_clean_data_matie/refactor_mv.txt"
 write.table(mvtable, datafile, quote = FALSE, sep = '\t')
 
 source("refactor_modify.R")
@@ -38,9 +38,9 @@ k = 5
 refactor_obj <- refactor(datafile,k)
 
 
-datafile <- 'rrbs_clean_data/predictedMeth_m.RDS'
+datafile <- 'rrbs_clean_data_matie/predictedMeth_m.RDS'
 saveRDS(mv, datafile)
 rm(betav, mv, qualityb, offset)
 
-refactor_obj_name <- "rrbs_clean_data/refactor_obj.RDS"
+refactor_obj_name <- "rrbs_clean_data_matie/refactor_obj.RDS"
 saveRDS(refactor_obj, refactor_obj_name)
