@@ -1,9 +1,20 @@
+## A new implementation with BiSeq
+
+[BiSeq.R](BiSeq.R) replaces 1_BiSeq.R in both experiments below.
+
+It handles the triplet with suffexes as 1a2a,1b3b,2c3c rather than a sequence of numbers.
+
 # scripts_lmer/ and scripts_matie/
 
-* 1_BiSeq.R in both directories read a .csv phenotype file instead of .xlsx as well as src/ directory instead of BiSeq/. The former makes it easier to compromise the triplet with suffexes as 1a2a,1b3b,2c3c rather than a sequence of numbers; the latter contains those without "_" in the chromosome name through [zgrep.sh](zgrep.sh).
-* rrbs_clean_data_lmer/ and rrbs_clean_data_matie/ are the working directories, respectively.
+rrbs_clean_data_lmer/ and rrbs_clean_data_matie/ are the working directories, respectively.
 
-# BiSeq
+## Earlier experiments
+
+These efforts were incremental in nature and did not resolve the issue -- they are kept only historical reasons.
+
+1. It involves an attempt was to drop some CpGs through [zgrep.sh](zgrep.sh).
+
+2. Bioconductor/BiSeq
 
 * [Source](https://www.bioconductor.org/packages/release/bioc/src/contrib/BiSeq_1.28.0.tar.gz)
 * [Revised version](BiSeq_1.28.1.tar.gz): this can be seen with `tar xvfz BiSeq_1.28.1.tar.gz` through `R/readBismark.R` mainly the following two statements,
@@ -19,7 +30,7 @@ where `integer` is changed to `numeric` -- we don't have integer overflow but ma
 
 > ... class “BSraw” object: The totalReads and methReads matrices of an BSraw object must contain integer data.
 
-# Tutorial on DSS
+3. DSS
 
 * [Paper](https://doi.org/10.1007/s40484-019-0183-8)
 * [R code](https://static-content.springer.com/esm/art%3A10.1007%2Fs40484-019-0183-8/MediaObjects/40484_2019_183_MOESM2_ESM.zip)
