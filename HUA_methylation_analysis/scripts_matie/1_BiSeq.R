@@ -6,14 +6,15 @@ require(parallel)
 
 library(BiSeq)
 
-bm_files <- list.files("BiSeq", full.names = TRUE)
+bm_files <- list.files("src", full.names = TRUE)
 bm_ids <- sub(".*([0-9]{4}[a-c]?).*", "\\1", bm_files, perl = TRUE)
-filtered_ids <- which(! bm_ids %in% c("4149", "4150"))
+filtered_ids <- which(! bm_ids %in% c("3111","3112","4149", "4150"))
 bm_files <- bm_files[filtered_ids]
 bm_ids <- bm_ids[filtered_ids]
 
 library(openxlsx)
-bm_phen <- read.xlsx("SUA_sample_information.xlsx")
+# bm_phen <- read.xlsx("SUA_sample_information.xlsx")
+bm_phen <- read.csv("SUA_sample_information.csv")
 bm_group <- bm_phen[match(bm_ids, bm_phen$no), "SUA_level"]
 bm_group <- as.factor(bm_group)
 
