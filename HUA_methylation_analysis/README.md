@@ -12,7 +12,7 @@ rrbs_clean_data_lmer/ and rrbs_clean_data_matie/ are the working directories, re
 
 These efforts were incremental in nature and did not resolve the issue -- they are kept only historical reasons.
 
-1. It involves an attempt was to drop some CpGs through [zgrep.sh](zgrep.sh).
+1. It involves an attempt was to drop some CpGs from BiSeq/ into src/ through [zgrep.sh](zgrep.sh).
 
 2. Bioconductor/BiSeq
 
