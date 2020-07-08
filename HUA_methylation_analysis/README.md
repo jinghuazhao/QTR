@@ -10,7 +10,7 @@ This work is derived from the observation that we can dissect the total samples 
 
 Working directories for programs in **scripts_lmer/** and **scripts_matie/** now use **rrbs_clean_data_lmer/** and **rrbs_clean_data_matie/** are the working directories, respectively.
 
-## Earlier experiments
+## Legacy experiments
 
 These efforts were incremental in nature and did not resolve the issue -- they are kept only historical reasons.
 
