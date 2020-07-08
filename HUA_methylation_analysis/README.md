@@ -24,9 +24,9 @@ Unfortunately, combine method of BSraw remains crashed.
   tReads <- matrix(0L, nrow=length(fData), ncol=length(methData))
   mReads <- matrix(0L, nrow=length(fData), ncol=length(methData))
 ```
-where `integer` is changed to `numeric` -- we don't have integer overflow but may have memory problem for a huge request (>250G).
+we don't have integer overflow but may have memory problem for a huge request (>250G).
 
-R/methods-BSraw.R involves length = nr*nc can be done similarly.
+R/methods-BSraw.R involves `length = nr*nc` and can be done similarly.
 
 ## Legacy experiments
 
