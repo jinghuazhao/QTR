@@ -4,17 +4,11 @@ It becomes apparent that beyond certain number of samples, BiSeq suddenly has in
 
 ## A new implementation with BiSeq
 
-This work is derived from the observation that we can dissect the total samples in batches and then combine them.
+1. Work in batches and then combine them.
 
 [BiSeq.R](BiSeq.R) replaces 1_BiSeq.R in both experiments below. It handles the triplet with suffexes as 1a2a,1b3b,2c3c rather than a sequence of numbers, as readily visible from *SUA_sample_information.csv*.
 
 Working directories for programs in **scripts_lmer/** and **scripts_matie/** now use **rrbs_clean_data_lmer/** and **rrbs_clean_data_matie/** are the working directories, respectively.
-
-## Legacy experiments
-
-These efforts were incremental in nature and did not resolve the issue -- they are kept only historical reasons.
-
-1. An attempt was to drop CpG sites from BiSeq/ into src/ through [zgrep.sh](zgrep.sh).
 
 2. Amendment to R/BiSeq package.
 
@@ -29,6 +23,12 @@ These efforts were incremental in nature and did not resolve the issue -- they a
   mReads <- as.integer(matrix(numeric(length = as.numeric(length(fData)) * as.numeric(length(methData))), nrow=length(fData)))
 ```
 where `integer` is changed to `numeric` -- we don't have integer overflow but may have memory problem for a huge request (>250G); `as.integer()` is required since
+
+## Legacy experiments
+
+These efforts were incremental in nature and did not resolve the issue -- they are kept only historical reasons.
+
+1. An attempt was to drop CpG sites from BiSeq/ into src/ through [zgrep.sh](zgrep.sh).
 
 > ... class “BSraw” object: The totalReads and methReads matrices of an BSraw object must contain integer data.
 
