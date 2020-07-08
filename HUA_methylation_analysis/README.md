@@ -1,6 +1,6 @@
 # scripts_lmer/ and scripts_matie/
 
-* 1_BiSeq.R in both directories read a .csv phenotype file instead of .xlsx as well as src/ directory instead of BiSeq/; the latter contains those without "_" in the chromosome name through [zgrep.sh](zgrep.sh).
+* 1_BiSeq.R in both directories read a .csv phenotype file instead of .xlsx as well as src/ directory instead of BiSeq/. The former makes it easier to compromise the triplet with suffexes as 1a2a,1b3b,2c3c rather than a sequence of numbers; the latter contains those without "_" in the chromosome name through [zgrep.sh](zgrep.sh).
 * rrbs_clean_data_lmer/ and rrbs_clean_data_matie/ are the working directories, respectively.
 
 # BiSeq
