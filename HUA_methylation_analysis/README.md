@@ -14,8 +14,8 @@ These efforts were incremental in nature and did not resolve the issue -- they a
 
 2. Bioconductor/BiSeq
 
-* [Source](https://www.bioconductor.org/packages/release/bioc/src/contrib/BiSeq_1.28.0.tar.gz)
-* [Revised version](BiSeq_1.28.1.tar.gz): this can be seen with `tar xvfz BiSeq_1.28.1.tar.gz` through `R/readBismark.R` mainly the following two statements,
+* [Bioconductor package](https://www.bioconductor.org/packages/release/bioc/src/contrib/BiSeq_1.28.0.tar.gz)
+* [Revised package](BiSeq_1.28.1.tar.gz): this can be seen with `tar xvfz BiSeq_1.28.1.tar.gz` through `R/readBismark.R` mainly the following two statements,
 ```r
 # overflow and NA
   tReads <- matrix(integer(length = length(fData) * length(methData)), nrow=length(fData))
