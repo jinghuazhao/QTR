@@ -12,8 +12,8 @@ list_files <- list.files("BiSeq", full.names = TRUE)
 N <- length(list_files)
 y <- setNames(list_files,paste0("sample",1:N))
 
-readBatch <- function(set)
-# Selective samples as enumerated in set
+setRead <- function(set)
+# Selective sample reading through set enumeration
 {
   bm_files <- as.character(y[paste0("sample",set)])
   bm_ids <- sub(".*([0-9]{4}[a-c]?).*", "\\1", bm_files, perl = TRUE)
@@ -26,9 +26,9 @@ readBatch <- function(set)
 }
 
 dir.create("rrbs_clean_data_lmer")
-rrbs1 <- readBatch(1:45)
-rrbs2 <- readBatch(46:90)
-rrbs3 <- readBatch(91:N)
+rrbs1 <- setRead(1:45)
+rrbs2 <- setRead(46:90)
+rrbs3 <- setRead(91:N)
 save(rrbs1,rrbs2,rrbs3,file="rrbs.rda")
 rrbs <- combine(combine(rrbs1,rrbs2),rrsb3)
 saveRDS(rrbs, "rrbs_clean_data_lmer/rrbs.RDS")

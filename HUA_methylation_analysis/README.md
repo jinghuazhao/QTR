@@ -1,4 +1,10 @@
+## The BiSeq problem
+
+It becomes apparent that beyond certain number of samples, BiSeq suddenly has integer overflow/request enormous amount of memory.
+
 ## A new implementation with BiSeq
+
+This work is derived from the observation that we can dissect the total samples in batches and then combine them.
 
 [BiSeq.R](BiSeq.R) replaces 1_BiSeq.R in both experiments below. It handles the triplet with suffexes as 1a2a,1b3b,2c3c rather than a sequence of numbers, as readily visible from *SUA_sample_information.csv*.
 
