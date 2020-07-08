@@ -6,7 +6,12 @@
 # BiSeq
 
 * [Source](https://www.bioconductor.org/packages/release/bioc/src/contrib/BiSeq_1.28.0.tar.gz)
-* [Revised version](BiSeq_1.28.1.tar.gz): this can be seen with `tar xvfz BiSeq_1.28.1.tar.gz` through `R/readBismark.R`.
+* [Revised version](BiSeq_1.28.1.tar.gz): this can be seen with `tar xvfz BiSeq_1.28.1.tar.gz` through `R/readBismark.R` mainly the following two statements,
+```r
+  tReads <- matrix(numeric(length = as.numeric(length(fData)) * as.numeric(length(methData))), nrow=length(fData))
+  mReads <- matrix(numeric(length = as.numeric(length(fData)) * as.numeric(length(methData))), nrow=length(fData))
+```
+where `integer` is changed to `numeric` -- we don't have integer overflow but may have memory problem for a huge request.
 
 # Tutorial on DSS
 
