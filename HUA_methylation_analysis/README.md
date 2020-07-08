@@ -10,6 +10,8 @@ It becomes apparent that beyond certain number of samples, BiSeq suddenly has in
 
 Working directories for programs in **scripts_lmer/** and **scripts_matie/** now use **rrbs_clean_data_lmer/** and **rrbs_clean_data_matie/** are the working directories, respectively.
 
+Unfortunately, combine method of BSraw remains crashed.
+
 2. Amendment to R/BiSeq package.
 
 * [BiSeq 1.28.0](https://www.bioconductor.org/packages/release/bioc/src/contrib/BiSeq_1.28.0.tar.gz) is hosted at Bioconductor.
@@ -19,10 +21,12 @@ Working directories for programs in **scripts_lmer/** and **scripts_matie/** now
   tReads <- matrix(integer(length = length(fData) * length(methData)), nrow=length(fData))
   mReads <- matrix(integer(length = length(fData) * length(methData)), nrow=length(fData))
 # to
-  tReads <- as.integer(matrix(numeric(length = as.numeric(length(fData)) * as.numeric(length(methData))), nrow=length(fData)))
-  mReads <- as.integer(matrix(numeric(length = as.numeric(length(fData)) * as.numeric(length(methData))), nrow=length(fData)))
+  tReads <- matrix(0L, nrow=length(fData), ncol=length(methData))
+  mReads <- matrix(0L, nrow=length(fData), ncol=length(methData))
 ```
-where `integer` is changed to `numeric` -- we don't have integer overflow but may have memory problem for a huge request (>250G); `as.integer()` is required since
+where `integer` is changed to `numeric` -- we don't have integer overflow but may have memory problem for a huge request (>250G).
+
+R/methods-BSraw.R involves length = nr*nc can be done similarly.
 
 ## Legacy experiments
 
