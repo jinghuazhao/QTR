@@ -6,7 +6,7 @@
 # BiSeq
 
 * [Source](https://www.bioconductor.org/packages/release/bioc/src/contrib/BiSeq_1.28.0.tar.gz)
-* [Revision](BiSeq_1.28.1.tar.gz)
+* [Revised version](BiSeq_1.28.1.tar.gz): this can be seen with `tar xvfz BiSeq_1.28.1.tar.gz` through `R/readBismark.R`.
 
 # Tutorial on DSS
 
