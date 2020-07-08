@@ -1,8 +1,6 @@
 ## A new implementation with BiSeq
 
-[BiSeq.R](BiSeq.R) replaces 1_BiSeq.R in both experiments below.
-
-It handles the triplet with suffexes as 1a2a,1b3b,2c3c rather than a sequence of numbers, as readily visible from *SUA_sample_information.csv*.
+[BiSeq.R](BiSeq.R) replaces 1_BiSeq.R in both experiments below. It handles the triplet with suffexes as 1a2a,1b3b,2c3c rather than a sequence of numbers, as readily visible from *SUA_sample_information.csv*.
 
 Working directories for programs in **scripts_lmer/** and **scripts_matie/** now use **rrbs_clean_data_lmer/** and **rrbs_clean_data_matie/** are the working directories, respectively.
 
