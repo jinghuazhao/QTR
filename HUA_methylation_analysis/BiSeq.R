@@ -23,13 +23,13 @@ readBatch <- function(set)
   bm_group <- bm_phen[match(bm_ids, bm_phen$no), "SUA_level"]
   bm_group <- as.factor(bm_group)
   rrbs <- readBismark(bm_files, colData = DataFrame(row.names = bm_ids, group = bm_group))
-  list(bm_files=bm_files,bm_ids=bm_ids,rrbs=rrbs)
 }
 
 dir.create("rrbs_clean_data_lmer")
 rrbs1 <- readBatch(1:45)
 rrbs2 <- readBatch(46:90)
 rrbs3 <- readBatch(91:134)
+save(rrbs1,rrbs2,rrbs3,file="rrbs.rda")
 rrbs12 <- combine(rrbs1,rrbs2)
 rrbs <- combine(rrbs12,rrbs3)
 saveRDS(rrbs, "rrbs_clean_data_lmer/rrbs.RDS")
