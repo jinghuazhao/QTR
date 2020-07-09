@@ -30,7 +30,7 @@ rrbs1 <- setRead(1:45)
 rrbs2 <- setRead(46:90)
 rrbs3 <- setRead(91:N)
 save(rrbs1,rrbs2,rrbs3,file="rrbs.rda")
-rrbs <- combine(combine(rrbs1,rrbs2),rrsb3)
+rrbs <- combine(combine(rrbs1,rrbs2),rrbs3)
 saveRDS(rrbs, "rrbs_clean_data_lmer/rrbs.RDS")
 
 # pdf('rrbs_covBoxplots.pdf', paper = 'a4r', width = 0, height = 0)
