@@ -30,7 +30,7 @@ then we don't have integer overflow on dimensions of the integer matrices but ma
 
 ## Possible way forward
 
-Can we consider analysis by chromosome instead of sample? A data partition script is implemented as [split.sh]()(split.sh).
+Can we consider analysis by chromosome instead of sample? A data partition script is implemented as [split.sh](split.sh).
 
 ## Related work
 
