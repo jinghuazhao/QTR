@@ -41,3 +41,7 @@ These efforts were incremental in nature and did not resolve the issue -- they a
 ## Possible way forward
 
 Can we consider analysis by chromosome instead of sample?
+
+## Acknowledgements
+
+The use of `combine` method from BSraw class concurs with suggestion from the BiSeq package author, Katja Hebestreit <katja.hebestreit@gmail.com> as well as hint over analysis by chromosome.
