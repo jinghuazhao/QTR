@@ -39,4 +39,4 @@ https://doi.org/10.1007/s40484-019-0183-8, [R code](https://static-content.sprin
 
 ## Acknowledgements
 
-The BiSeq package author, Katja Hebestreit <katja.hebestreit@gmail.com> hints at analysis by chromosome.
+The BiSeq package author, Katja Hebestreit <katja.hebestreit@gmail.com>, hints at analysis by chromosome.
