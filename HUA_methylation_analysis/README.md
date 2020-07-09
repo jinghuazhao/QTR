@@ -34,9 +34,8 @@ Can we consider analysis by chromosome instead of sample? A data partition scrip
 
 ## Related work
 
-Feng, H. and H. Wu (2019). "Differential methylation analysis for bisulfite sequencing using DSS." Quantitative Biology 7(4): 327-334.
-* [Paper](https://doi.org/10.1007/s40484-019-0183-8)
-* [R code](https://static-content.springer.com/esm/art%3A10.1007%2Fs40484-019-0183-8/MediaObjects/40484_2019_183_MOESM2_ESM.zip)
+Feng, H. and H. Wu (2019). "Differential methylation analysis for bisulfite sequencing using DSS." Quantitative Biology 7(4): 327-334, 
+https://doi.org/10.1007/s40484-019-0183-8, [R code](https://static-content.springer.com/esm/art%3A10.1007%2Fs40484-019-0183-8/MediaObjects/40484_2019_183_MOESM2_ESM.zip).
 
 ## Acknowledgements
 
