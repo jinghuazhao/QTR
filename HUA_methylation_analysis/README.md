@@ -30,7 +30,7 @@ R/methods-BSraw.R involves `length = nr*nc` and can be done similarly.
 
 ## Legacy experiments
 
-These efforts were incremental in nature and did not resolve the issue -- they are kept only historical reasons.
+These efforts were incremental in nature and did not resolve the issue -- they are kept only for historical reasons.
 
 1. An attempt to drop CpG sites from BiSeq/ into src/ through [zgrep.sh](zgrep.sh).
 2. DSS as a possible alternative.
