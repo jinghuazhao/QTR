@@ -39,4 +39,4 @@ https://doi.org/10.1007/s40484-019-0183-8, [R code](https://static-content.sprin
 
 ## Acknowledgements
 
-The use of `combine` method from BSraw class concurs with suggestion from the BiSeq package author, Katja Hebestreit <katja.hebestreit@gmail.com> as well as hint over analysis by chromosome.
+The BiSeq package author, Katja Hebestreit <katja.hebestreit@gmail.com> hints at analysis by chromosome.
