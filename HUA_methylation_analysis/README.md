@@ -1,6 +1,6 @@
 ## The BiSeq problem
 
-It becomes apparent that beyond certain number of samples, BiSeq suddenly has integer overflow/request enormous amount of memory.
+It becomes apparent that beyond certain number of samples, BiSeq suddenly has integer overflow/requests enormous amount of memory.
 
 ## A new implementation with BiSeq
 
