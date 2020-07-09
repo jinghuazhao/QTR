@@ -15,7 +15,7 @@ Unfortunately, combine method of BSraw remains crashed.
 2. Amendment to R/BiSeq package.
 
 * [BiSeq 1.28.0](https://www.bioconductor.org/packages/release/bioc/src/contrib/BiSeq_1.28.0.tar.gz) is hosted at Bioconductor.
-* [BiSeq 1.28.1](BiSeq_1.28.1.tar.gz) contains minor changes to the following two statements in *R/readBismark.R* of the original package,
+* [BiSeq 1.28.1](BiSeq_1.28.1.tar.gz) contains changes to the following two statements in *R/readBismark.R* of the original package,
 ```r
 # from
   tReads <- matrix(integer(length = length(fData) * length(methData)), nrow=length(fData))
@@ -26,7 +26,7 @@ Unfortunately, combine method of BSraw remains crashed.
 ```
 we don't have integer overflow but may have memory problem for a huge request (>250G).
 
-R/methods-BSraw.R involves `length = nr*nc` and can be done similarly.
+*R/methods-BSraw.R* involves `length = nr*nc` and can be done similarly.
 
 ## Legacy experiments
 
