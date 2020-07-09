@@ -28,19 +28,15 @@ then we don't have integer overflow on dimensions of the integer matrices but ma
 
 *R/methods-BSraw.R* involves `length = nr*nc` and can be dealt with similarly.
 
-## Legacy experiments
-
-These efforts were incremental in nature and did not resolve the issue -- they are kept only for historical reasons.
-
-1. An attempt to drop CpG sites from BiSeq/ into src/ through [zgrep.sh](zgrep.sh).
-2. DSS as a possible alternative.
-
-* [Paper](https://doi.org/10.1007/s40484-019-0183-8)
-* [R code](https://static-content.springer.com/esm/art%3A10.1007%2Fs40484-019-0183-8/MediaObjects/40484_2019_183_MOESM2_ESM.zip)
-
 ## Possible way forward
 
-Can we consider analysis by chromosome instead of sample?
+Can we consider analysis by chromosome instead of sample? A data partition script is implemented as [split.sh]()(split.sh).
+
+## Related work
+
+DSS
+* [Paper](https://doi.org/10.1007/s40484-019-0183-8)
+* [R code](https://static-content.springer.com/esm/art%3A10.1007%2Fs40484-019-0183-8/MediaObjects/40484_2019_183_MOESM2_ESM.zip)
 
 ## Acknowledgements
 
