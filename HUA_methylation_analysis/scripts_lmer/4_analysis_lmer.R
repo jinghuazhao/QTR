@@ -1,4 +1,4 @@
-setwd("/media/data/project/HUA_methylation_analysis_lmer/")
+# setwd("/media/data/project/HUA_methylation_analysis_lmer/")
 getwd()
 
 options(stringsAsFactors = FALSE)
