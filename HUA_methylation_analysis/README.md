@@ -32,11 +32,8 @@ R/methods-BSraw.R involves `length = nr*nc` and can be done similarly.
 
 These efforts were incremental in nature and did not resolve the issue -- they are kept only historical reasons.
 
-1. An attempt was to drop CpG sites from BiSeq/ into src/ through [zgrep.sh](zgrep.sh).
-
-> ... class “BSraw” object: The totalReads and methReads matrices of an BSraw object must contain integer data.
-
-3. DSS as a possible alternative.
+1. An attempt to drop CpG sites from BiSeq/ into src/ through [zgrep.sh](zgrep.sh).
+2. DSS as a possible alternative.
 
 * [Paper](https://doi.org/10.1007/s40484-019-0183-8)
 * [R code](https://static-content.springer.com/esm/art%3A10.1007%2Fs40484-019-0183-8/MediaObjects/40484_2019_183_MOESM2_ESM.zip)
