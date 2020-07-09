@@ -10,7 +10,7 @@ It becomes apparent that beyond certain number of samples, BiSeq suddenly has in
 
 Working directories for programs in **scripts_lmer/** and **scripts_matie/** are now **rrbs_clean_data_lmer/** and **rrbs_clean_data_matie/**, respectively.
 
-Unfortunately, the `combine` method of BSraw remains crashed. At least, it illustrates three batches here which could be saved, loaded again from a new sessino of R and retry, which turned to be successful.
+Unfortunately, the `combine` method of BSraw remains crashed. At least, it illustrates three batches here which could be saved, loaded again from a new session of R and retry, which turned to be successful.
 
 2. Amendment to R/BiSeq package.
 
