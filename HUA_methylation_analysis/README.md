@@ -4,11 +4,11 @@ It becomes apparent that beyond certain number of samples, BiSeq suddenly has in
 
 ## Solutions
 
-### Chromosome partition
+### I. Chromosome partition
 
 A data partition script is implemented as [BiSeq.sh](BiSeq.sh).
 
-## Sample partition
+## II. Sample partition
 
 1. Work in batches and then combine them.
 
