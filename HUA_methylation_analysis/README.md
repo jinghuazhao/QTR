@@ -2,7 +2,11 @@
 
 It becomes apparent that beyond certain number of samples, BiSeq suddenly has integer overflow/requests enormous amount of memory.
 
-## A new implementation with BiSeq
+## Chromosome partition
+
+A data partition script is implemented as [BiSeq.sh](BiSeq.sh).
+
+## Sample partition
 
 1. Work in batches and then combine them.
 
@@ -27,10 +31,6 @@ Unfortunately, the `combine` method of BSraw remains crashed. At least, it illus
 then we don't have integer overflow on dimensions of the integer matrices but may have memory problem for a huge request (>250G).
 
 *R/methods-BSraw.R* involves `length = nr*nc` and can be dealt with similarly.
-
-## Possible way forward
-
-Can we consider analysis by chromosome instead of sample? A data partition script is implemented as [BiSeq.sh](BiSeq.sh).
 
 ## Related work
 
