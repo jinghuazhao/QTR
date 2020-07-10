@@ -31,7 +31,7 @@ dir.create(outdir)
 saveRDS(rrbs, rrbs_file)
 
 # pdf('rrbs_covBoxplots.pdf', paper = 'a4r', width = 0, height = 0)
-png(paste0(rrbs_covBoxplots_file, width = 900, height = 480, units = 'px', pointsize = 12)
+png(rrbs_covBoxplots_file, width = 900, height = 480, units = 'px', pointsize = 12)
 covBoxplots(rrbs, col = "cornflowerblue", las = 2)
 dev.off()
 
