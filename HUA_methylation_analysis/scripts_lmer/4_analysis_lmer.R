@@ -5,7 +5,7 @@ options(stringsAsFactors = FALSE)
 
 chr <- Sys.getenv("chr")
 suffix <- Sys.getenv("suffix")
-outdir <- paste0("rrbs_clean_data_",suffix)
+outdir <- paste0("rrbs_clean_data_",suffix,"/")
 
 library(plyr)
 library(doMC)

@@ -6,7 +6,7 @@ options(stringsAsFactors = FALSE)
 chr <- Sys.getenv("chr")
 suffix <- Sys.getenv("suffix")
 srcdir <- paste0("scripts_",suffix)
-outdir <- paste0("rrbs_clean_data_",suffix)
+outdir <- paste0("rrbs_clean_data_",suffix,"/")
 rrbs.clust.lim_file <- paste0(outdir,"rrbs.clust.lim-",chr,".RDS")
 predictedMeth_file <- paste0(outdir,"predictedMeth-",chr,".RDS")
 
