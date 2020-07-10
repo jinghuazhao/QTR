@@ -6,7 +6,7 @@ It becomes apparent that beyond certain number of samples, BiSeq suddenly has in
 
 ### I. Chromosome partition
 
-A data partition script is implemented as [BiSeq.sh](BiSeq.sh).
+[BiSeq.sh](BiSeq.sh) implements data partition by chromosome followed by analysis.
 
 ## II. Sample partition
 
