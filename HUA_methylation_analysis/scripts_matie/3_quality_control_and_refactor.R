@@ -33,7 +33,7 @@ mvtable <- data.frame(ID = rownames(mvtable), mvtable)
 datafile <- "rrbs_clean_data_matie/refactor_mv.txt"
 write.table(mvtable, datafile, quote = FALSE, sep = '\t')
 
-source("refactor_modify.R")
+source("scripts_matie/refactor_modify.R")
 k = 5
 refactor_obj <- refactor(datafile,k)
 

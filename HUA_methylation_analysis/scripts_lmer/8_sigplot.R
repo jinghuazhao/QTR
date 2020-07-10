@@ -1,11 +1,11 @@
 options(stringsAsFactors = FALSE)
 
 result <- read.table('combined-pvalues/data/regions.sig.bed')
+outdir <- "rrbs_clean_data_lmer/"
 
 sigresult <- result[result$V7 < 0.1, ]
 sigresult <- sigresult[order(sigresult$V7), ]
 numberOfSignificance <- nrow(sigresult)
-
 
 library(xtable)
 sigresult_tex <- xtable(sigresult)
@@ -13,11 +13,9 @@ print(sigresult_tex, file = "rrbs_clean_data_lmer/sigDMR.tex")
 write.csv(sigresult, file = "rrbs_clean_data_lmer/sigDMR.csv", row.names = FALSE)
 
 resultname <- 'rrbs_clean_data_lmer/result_range.RDS'
-
 result <- readRDS(resultname)
 
 cpgresult <- result
-
 
 library(ggplot2)
 
@@ -61,7 +59,6 @@ for(npage in 1:num_page) {
 }
 dev.off()
 
-
 library(grid)
 library(gridExtra)
 fmt_dcimals <- function(decimals=0){
@@ -92,9 +89,6 @@ for(npage in 1:num_page) {
 	do.call('grid.arrange', c(plot_list, ncol = col_per_page, nrow = row_per_page))
 }
 dev.off()
-
-
-
 
 ## library(ggpubr)
 ## plot_list <- list()

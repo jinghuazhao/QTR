@@ -1,10 +1,17 @@
-setwd("/media/data/project/HUA_methylation_analysis/")
+# setwd("/media/data/project/HUA_methylation_analysis/")
 getwd()
 
 options(stringsAsFactors = FALSE)
 
-datafile <- 'rrbs_clean_data_lmer/predictedMeth_beta.RDS'
-rangefile <- 'rrbs_clean_data_lmer/predictedMeth_range.RDS'
+chr <- Sys.getenv("chr")
+suffix <- Sys.getenv("suffix")
+srcdir <- paste0("scripts_",suffix)
+outdir <- paste0("rrbs_clean_data_",suffix)
+rrbs.clust.lim_file <- paste0(outdir,"rrbs.clust.lim-",chr,".RDS")
+predictedMeth_file <- paste0(outdir,"predictedMeth-",chr,".RDS")
+
+datafile <- paste0(outdir,"predictedMeth-",chr,"_beta.RDS")
+rangefile <- paste0(outdir,"predictedMeth-",chr,"_range.RDS")
 
 betav <- readRDS(datafile)
 rangev <- readRDS(rangefile)
@@ -19,7 +26,7 @@ saveRDS(mv, gsub("_beta.RDS", "_m_quality.RDS", datafile))
 
 # I am not sure whether the following script should be run or not
 rangev <- rangev[!qualityb, ]
-saveRDS(rangev, gsub("_range.RDS", "_range_quality.RDS", rangefile))
+saveRDS(rangev, paste0(oudir,predictedMeth-",chr,"_range_quality.RDS"))
 
 library(plyr)
 library(doMC)
@@ -35,19 +42,19 @@ mv <- as.data.frame(mv)
 rownames(mv) <- rownamesmv
 colnames(mv) <- colnamesmv
 
-saveRDS(mv, 'rrbs_clean_data_lmer/predictedMeth_m.RDS')
+saveRDS(mv, paste0(outdir,"predictedMeth-",chr","_m.RDS')
 
 options(stringsAsFactors = FALSE)
 mvtable <- mv
 mvtable <- data.frame(ID = rownames(mvtable), mvtable)
 
-refactor_datafile <- "rrbs_clean_data_lmer/refactor_mv.txt"
+refactor_datafile <- paste0(outdir,"refactor-",chr,"_mv.txt"
 write.table(mvtable, refactor_datafile, quote = FALSE, sep = '\t')
 
-source("refactor_modify.R")
+source(paste0(srcdir,"refactor_modify.R"))
 k = 5
 refactor_obj <- refactor(refactor_datafile,k)
 PCs <- as.data.frame(refactor_obj$standard_pca)
 rownames(PCs) <- colnamesmv
 
-saveRDS(PCs,  "rrbs_clean_data_lmer/refactor_obj.RDS")
+saveRDS(PCs, paste0(outdir,"refactor-",chr,"_obj.RDS")

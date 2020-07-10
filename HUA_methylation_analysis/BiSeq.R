@@ -26,11 +26,12 @@ setRead <- function(set)
 }
 
 dir.create("rrbs_clean_data_lmer")
-rrbs1 <- setRead(1:45)
-rrbs2 <- setRead(46:90)
-rrbs3 <- setRead(91:N)
-save(rrbs1,rrbs2,rrbs3,file="rrbs.rda")
-rrbs <- combine(combine(rrbs1,rrbs2),rrbs3)
+sets <- list()
+for (i in 1:13) sets[[i]] <- setRead(((i-1)*10+1):(i*10))
+sets[[14]] <-setRead(131:134)
+save(sets,file="rrbs.rda")
+rrbs <- sets[[1]]
+for (i in 2:14) rrbs <- combine(rrbs,sets[[i]])
 saveRDS(rrbs, "rrbs_clean_data_lmer/rrbs.RDS")
 
 # pdf('rrbs_covBoxplots.pdf', paper = 'a4r', width = 0, height = 0)

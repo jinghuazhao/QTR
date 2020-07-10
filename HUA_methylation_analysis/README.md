@@ -6,7 +6,7 @@ It becomes apparent that beyond certain number of samples, BiSeq suddenly has in
 
 1. Work in batches and then combine them.
 
-[BiSeq.R](BiSeq.R) replaces 1_BiSeq.R in both experiments on *lmer* and *matie* below. It handles the triplet with suffexes as 1a2a,1b3b,2c3c rather than a sequence of numbers, as readily seen from *SUA_sample_information.csv*.
+[BiSeq.R](BiSeq.R) replaces 1_BiSeq.R in both experiments on *lmer* and *matie* below. It handles the triplet with suffexes as 1a2a,1b3b,2c3c rather than a sequence of numbers.
 
 Working directories for programs in **scripts_lmer/** and **scripts_matie/** are now **rrbs_clean_data_lmer/** and **rrbs_clean_data_matie/**, respectively.
 
@@ -30,7 +30,7 @@ then we don't have integer overflow on dimensions of the integer matrices but ma
 
 ## Possible way forward
 
-Can we consider analysis by chromosome instead of sample? A data partition script is implemented as [split.sh](split.sh).
+Can we consider analysis by chromosome instead of sample? A data partition script is implemented as [BiSeq.sh](BiSeq.sh).
 
 ## Related work
 
