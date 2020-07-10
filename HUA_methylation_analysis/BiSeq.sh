@@ -19,10 +19,10 @@ do
   export chr=chr${chromosome}
   export srcdir=scripts_${suffix}
   echo --- running ${suffix} chromosome ${chromosomes} ---
-  R --no-save -q < ${srcdir}/1_BiSeq.R
-  R --no-save -q < ${srcdir}/2_format_methylation_data.R
-  R --no-save -q < ${srcdir}/3_quality_control_and_refactor.R
-  R --no-save -q < ${srcdir}/4_analysis_lmer.R
+  R --no-save -q < ${srcdir}/1_BiSeq.R > 1.log
+  R --no-save -q < ${srcdir}/2_format_methylation_data.R > 2.log
+  R --no-save -q < ${srcdir}/3_quality_control_and_refactor.R > 3.log
+  R --no-save -q < ${srcdir}/4_analysis_lmer.R > 4.log
 done
 R --no-save -q < ${srcdir}/5_read_result.R
 R --no-save -q < ${srcdir}/6_get_annotation.R
