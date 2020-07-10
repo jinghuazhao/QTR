@@ -7,7 +7,7 @@ require(parallel)
 library(BiSeq)
 
 chr <- Sys.getenv("chr")
-chr <- Sys.getenv("suffix")
+suffix <- Sys.getenv("suffix")
 outdir <- paste0("rrbs_clean_data_",suffix,"/")
 rrbs_file <- paste0(outdir,"rrbs-",chr,".RDS")
 rrbs.clust.lim_file <- paste0(outdir,"rrbs.clust.lim-",chr,".RDS")
