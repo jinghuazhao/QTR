@@ -41,7 +41,7 @@ bsraw_matrix <- function(filename) {
 	saveRDS(mbeta, file_beta)
 }
 
-bsraw_matrix(rrbs.clust.lim)
+bsraw_matrix(rrbs.clust.lim_file)
 
 bsrel_matrix <- function(filename) {
 

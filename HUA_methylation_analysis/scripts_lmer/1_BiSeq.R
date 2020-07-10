@@ -7,10 +7,13 @@ require(parallel)
 library(BiSeq)
 
 chr <- Sys.getenv("chr")
-outdir <- "rrbs_clean_data/"
+chr <- Sys.getenv("suffix")
+outdir <- paste0("rrbs_clean_data",suffix,"/")
 rrbs_file <- paste0(outdir,"rrbs-",chr,".RDS")
 rrbs.clust.lim_file <- paste0(outdir,"rrbs.clust.lim-",chr,".RDS")
 predictedMeth_file <- paste0(outdir,"predictedMeth-",chr,".RDS")
+rrbs_covBoxPlots_file <- paste0(outdir,rrbs_covBoxPlots-",chr.".png")
+rrbs.clust.lim_covBoxplots_file <- paste0(outdir,"rrbs.clust.lim_covBoxplots-",chr,"png")
 
 list_files <- list.files("BiSeq", full.names = TRUE)
 bm_ids <- sub(".*([0-9]{4}[a-c]?).*", "\\1", list_files, perl = TRUE)
@@ -24,11 +27,11 @@ bm_group <- bm_phen[match(bm_ids, bm_phen$no), "SUA_level"]
 bm_group <- as.factor(bm_group)
 
 rrbs <- readBismark(bm_files, colData = DataFrame(row.names = bm_ids, group = bm_group))
-dir.create("rrbs_clean_data")
+dir.create(outdir)
 saveRDS(rrbs, rrbs_file)
 
 # pdf('rrbs_covBoxplots.pdf', paper = 'a4r', width = 0, height = 0)
-png("rrbs_clean_data/rrbs_covBoxplots.png", width = 900, height = 480, units = 'px', pointsize = 12)
+png(paste0(rrbs_covBoxplots_file, width = 900, height = 480, units = 'px', pointsize = 12)
 covBoxplots(rrbs, col = "cornflowerblue", las = 2)
 dev.off()
 
@@ -46,7 +49,7 @@ rrbs.clust.lim <- limitCov(rrbs.clust.unlim, maxCov = quant)
 saveRDS(rrbs.clust.lim, rrbs.clust.lim_file)
 
 # pdf('rrbs.clust.lim_covBoxplots.pdf', paper = 'a4r', width = 0, height = 0)
-png('rrbs_clean_data/rrbs.clust.lim_covBoxplots.png', width = 900, height = 480, units = 'px', pointsize = 12)
+png(rrbs.clust.lim_covBoxplots_file, width = 900, height = 480, units = 'px', pointsize = 12)
 covBoxplots(rrbs.clust.lim, col = "cornflowerblue", las = 2)
 dev.off()
 
