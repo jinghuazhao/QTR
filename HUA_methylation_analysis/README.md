@@ -8,7 +8,7 @@ It becomes apparent that beyond certain number of samples, BiSeq suddenly has in
 
 [BiSeq.sh](BiSeq.sh) implements data partition by chromosome followed by analysis.
 
-## II. Sample partition
+### II. Sample partition
 
 1. Work in batches and then combine them.
 
