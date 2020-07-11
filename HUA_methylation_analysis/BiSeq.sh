@@ -14,7 +14,6 @@ function setup()
 export suffix=lmer
 
 export chrs=$(echo $(seq 22) X Y M Z)
-export chr=18
 for chromosome in ${chrs}
 do
   export chr=chr${chromosome}
