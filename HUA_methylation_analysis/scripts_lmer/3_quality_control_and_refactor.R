@@ -5,7 +5,7 @@ options(stringsAsFactors = FALSE)
 
 chr <- Sys.getenv("chr")
 suffix <- Sys.getenv("suffix")
-srcdir <- paste0("scripts_",suffix)
+scripts_dir <- paste0("scripts_",suffix,"/")
 outdir <- paste0("rrbs_clean_data_",suffix,"/")
 rrbs.clust.lim_file <- paste0(outdir,"rrbs.clust.lim-",chr,".RDS")
 predictedMeth_file <- paste0(outdir,"predictedMeth-",chr,".RDS")
@@ -26,7 +26,7 @@ saveRDS(mv, gsub("_beta.RDS", "_m_quality.RDS", datafile))
 
 # I am not sure whether the following script should be run or not
 rangev <- rangev[!qualityb, ]
-saveRDS(rangev, paste0(oudir,predictedMeth-",chr,"_range_quality.RDS"))
+saveRDS(rangev, paste0(outdir,"predictedMeth-",chr,"_range_quality.RDS"))
 
 library(plyr)
 library(doMC)
@@ -35,26 +35,25 @@ colnamesmv <- colnames(mv)
 rownamesmv <- rownames(mv)
 mv <- alply(.data = mv, .margins = 1, .fun = function(x) {
 				x[which(is.na(x))] <- median(x, na.rm = TRUE)
-				return(x)
-}, .parallel = TRUE)
+				return(x)}, .parallel = TRUE)
 mv <- do.call(rbind, mv)
 mv <- as.data.frame(mv)
 rownames(mv) <- rownamesmv
 colnames(mv) <- colnamesmv
 
-saveRDS(mv, paste0(outdir,"predictedMeth-",chr","_m.RDS')
+saveRDS(mv, paste0(outdir,"predictedMeth-",chr,"_m.RDS"))
 
 options(stringsAsFactors = FALSE)
 mvtable <- mv
 mvtable <- data.frame(ID = rownames(mvtable), mvtable)
 
-refactor_datafile <- paste0(outdir,"refactor-",chr,"_mv.txt"
+refactor_datafile <- paste0(outdir,"refactor-",chr,"_mv.txt")
 write.table(mvtable, refactor_datafile, quote = FALSE, sep = '\t')
 
-source(paste0(srcdir,"refactor_modify.R"))
+source(paste0(scripts_dir,"refactor_modify.R"))
 k = 5
 refactor_obj <- refactor(refactor_datafile,k)
 PCs <- as.data.frame(refactor_obj$standard_pca)
 rownames(PCs) <- colnamesmv
 
-saveRDS(PCs, paste0(outdir,"refactor-",chr,"_obj.RDS")
+saveRDS(PCs, paste0(outdir,"refactor-",chr,"_obj.RDS"))
