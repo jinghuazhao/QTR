@@ -13,7 +13,7 @@ rrbs_file <- paste0(outdir,"rrbs-",chr,".RDS")
 rrbs.clust.lim_file <- paste0(outdir,"rrbs.clust.lim-",chr,".RDS")
 predictedMeth_file <- paste0(outdir,"predictedMeth-",chr,".RDS")
 rrbs_covBoxplots_file <- paste0(outdir,"rrbs_covBoxPlots-",chr,".png")
-rrbs.clust.lim_covBoxplots_file <- paste0(outdir,"rrbs.clust.lim_covBoxplots-",chr,"png")
+rrbs.clust.lim_covBoxplots_file <- paste0(outdir,"rrbs.clust.lim_covBoxplots-",chr,".png")
 
 list_files <- list.files("BiSeq", full.names = TRUE)
 bm_ids <- sub(".*([0-9]{4}[a-c]?).*", "\\1", list_files, perl = TRUE)
