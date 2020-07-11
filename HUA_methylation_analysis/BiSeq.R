@@ -24,7 +24,7 @@ setRead <- function(set)
   rrbs <- readBismark(bm_files, colData = DataFrame(row.names = bm_ids, group = bm_group))
 }
 
-dir.create("rrbs_clean_data_lmer")
+dir.create("rrbs_clean_data")
 sets <- list()
 for (i in 1:13) sets[[i]] <- setRead(((i-1)*10+1):(i*10))
 sets[[14]] <-setRead(131:134)
@@ -49,15 +49,15 @@ ind.cov <- totalReads(rrbs.clust.unlim) > 0
 quant <- quantile(totalReads(rrbs.clust.unlim)[ind.cov], 0.9)
 quant
 rrbs.clust.lim <- limitCov(rrbs.clust.unlim, maxCov = quant)
-saveRDS(rrbs.clust.lim, 'rrbs_clean_data_lmer/rrbs.clust.lim.RDS')
+saveRDS(rrbs.clust.lim, 'rrbs_clean_data/rrbs.clust.lim.RDS')
 
 # pdf('rrbs.clust.lim_covBoxplots.pdf', paper = 'a4r', width = 0, height = 0)
-png('rrbs_clean_data_lmer/rrbs.clust.lim_covBoxplots.png', width = 900, height = 480, units = 'px', pointsize = 12)
+png('rrbs_clean_data/rrbs.clust.lim_covBoxplots.png', width = 900, height = 480, units = 'px', pointsize = 12)
 covBoxplots(rrbs.clust.lim, col = "cornflowerblue", las = 2)
 dev.off()
 
 predictedMeth <- predictMeth(object = rrbs.clust.lim, mc.cores = 1)
-saveRDS(predictedMeth, 'rrbs_clean_data_lmer/predictedMeth.RDS')
+saveRDS(predictedMeth, 'rrbs_clean_data/predictedMeth.RDS')
 
 # bs_range <- as.data.frame(rowRanges(predictedMeth))
 # bs_methylation <- methLevel(predictedMeth)
