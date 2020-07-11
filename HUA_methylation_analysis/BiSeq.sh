@@ -18,7 +18,7 @@ for chromosome in ${chrs}
 do
   export chr=chr${chromosome}
   export scripts_dir=scripts_${suffix}
-  echo --- running ${suffix} chromosome ${chromosomes} ---
+  echo --- running ${suffix} chromosome ${chromosome} ---
   R --no-save -q < ${scripts_dir}/1_BiSeq.R > 1.log
   R --no-save -q < ${scripts_dir}/2_format_methylation_data.R > 2.log
   R --no-save -q < ${scripts_dir}/3_quality_control_and_refactor.R > 3.log
