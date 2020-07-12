@@ -26,7 +26,7 @@ library(doMC)
 doMC::registerDoMC(cores = 14)
 colnamesmv <- colnames(mv)
 rownamesmv <- rownames(mv)
-mv <- alply(.data = mv, .margins = 1, .fun = function(x) {x[which(is.na(x))] <- median(x, na.rm = TRUE)	return(x)}, .parallel = TRUE)
+mv <- alply(.data = mv, .margins = 1, .fun = function(x) {x[which(is.na(x))] <- median(x, na.rm = TRUE); return(x)}, .parallel = TRUE)
 mv <- do.call(rbind, mv)
 mv <- as.data.frame(mv)
 rownames(mv) <- rownamesmv

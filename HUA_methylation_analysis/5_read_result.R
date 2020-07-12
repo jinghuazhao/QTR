@@ -17,7 +17,6 @@ result$seqnames <- as.character(result$seqnames)
 result <- result[(result$seqnames %in% paste0('chr', 1:22)), ]
 saveRDS(result, "rrbs_clean_data/result_range.RDS")
 
-
 library(openxlsx)
 sigresult <- result[result$seqnames %in% paste0('chr', 1:22), ]
 sigresult <- sigresult[, c('unit', 'seqnames', 'start', 'end', 'SUA:Pr(>|t|)', 'SUA:Estimate', 'padj')]

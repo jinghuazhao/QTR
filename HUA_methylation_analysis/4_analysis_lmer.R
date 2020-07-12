@@ -35,10 +35,11 @@ BMI <- phen$BMI
 require(gdata)
 require(lmerTest)
 
-dummy <- as.numeric(data_d[1, ])
-dummy <- summary(lmer(dummy ~ SUA + age + gender + systolic PCs$PC1 + PCs$PC2 + PCs$PC3 + PCs$PC4 + PCs$PC5 + (1|fid), data=phen ))$coefficient
-dummy <- unmatrix(dummy, byrow = TRUE)
-dummy <- cbind.data.frame(unit = rownames(data_d[1, ]), t(dummy))
+d <- data_d[1, ]
+CpG <- as.numeric(d)
+lmer.summary <- summary(lmer(SUA ~ CpG + age + gender + systolic + PCs$PC1 + PCs$PC2 + PCs$PC3 + PCs$PC4 + PCs$PC5 + (1|fid), data=phen))$coefficient
+lmer.vector <- unmatrix(lmer.summary, byrow = TRUE)
+dummy <- cbind.data.frame(unit = rownames(d), t(lmer.vector))
 dummy[1, ] <- NA
 
 require(plyr)
@@ -48,10 +49,11 @@ require(gdata)
 require(data.table)
 result <- rbindlist(alply(data_d, 1, function(obs) {
 	tryCatch({
-		sumt <- summary(lmer(as.numeric(obs) ~ SUA + age + gender + systolic + PCs$PC1 + PCs$PC2 + PCs$PC3 + PCs$PC4 + PCs$PC5 + (1|fid),
-                                     data=phen ))$coefficient
-		sumt <- unmatrix(sumt, byrow = TRUE)
-		sumt <- cbind.data.frame(unit = rownames(obs), t(sumt))
+                CpG <- as.numeric(obs)
+		s <- summary(lmer(SUA ~ CpG + age + gender + systolic + PCs$PC1 + PCs$PC2 + PCs$PC3 + PCs$PC4 + PCs$PC5 + (1|fid),
+                                  data=phen))$coefficient
+		us <- unmatrix(s, byrow = TRUE)
+		sumt <- cbind.data.frame(unit = rownames(obs), t(us))
 		sumt$unit <- rownames(obs)
 		return(sumt)
 	}, error = function(e) {
