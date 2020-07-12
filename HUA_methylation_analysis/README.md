@@ -1,8 +1,22 @@
-## The BiSeq problem
+## The BiSeq pipeline
+
+These consists of the following R programs,
+```
+1_BiSeq.R
+2_format_methylation_data.R
+3_quality_control_and_refactor.R
+4_analysis_lmer.R
+5_read_result.R
+6_get_annotation.R
+8_sigplot.R
+```
+which has working directory `rrbs_clean_data/`. It is also assumed that combined_pvalues package is available from the working directory.
+
+From these, two experimets were derived based on the software package lmer and matie whose source programs are contained in **scripts_lmer/** and **scripts_matie/** working directories,  **rrbs_clean_data_lmer/** and **rrbs_clean_data_matie/**, respectively.
+
+## The BiSeq problem and solutions
 
 It becomes apparent that beyond certain number of samples, BiSeq suddenly has integer overflow/requests enormous amount of memory.
-
-## Solutions
 
 ### I. Chromosome partition
 
@@ -12,9 +26,7 @@ It becomes apparent that beyond certain number of samples, BiSeq suddenly has in
 
 1. Work in batches and then combine them.
 
-[BiSeq.R](BiSeq.R) replaces 1_BiSeq.R in both experiments on *lmer* and *matie* below. It handles the triplet with suffexes as 1a2a,1b3b,2c3c rather than a sequence of numbers.
-
-Working directories for programs in **scripts_lmer/** and **scripts_matie/** are now **rrbs_clean_data_lmer/** and **rrbs_clean_data_matie/**, respectively.
+[BiSeq.R](BiSeq.R) replaces 1_BiSeq.R in both experiments on *lmer* and *matie*. It handles the triplet with suffexes as 1a2a,1b3b,2c3c rather than a sequence of numbers.
 
 Unfortunately, the `combine` method of BSraw remains crashed. At least, it illustrates three batches here which could be saved, loaded again from a new session of R and retry, which turned to be successful.
 
