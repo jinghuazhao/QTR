@@ -52,7 +52,7 @@ write.table(mvtable, refactor_datafile, quote = FALSE, sep = '\t')
 
 source(paste0(scripts_dir,"refactor_modify.R"))
 k = 5
-refactor_obj <- refactor(refactor_datafile,k)
+refactor_obj <- refactor(refactor_datafile,k,out = paste0(outdir,"refactor"))
 PCs <- as.data.frame(refactor_obj$standard_pca)
 rownames(PCs) <- colnamesmv
 
