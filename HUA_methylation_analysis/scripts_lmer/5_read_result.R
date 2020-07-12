@@ -3,16 +3,25 @@ getwd()
 
 options(stringsAsFactors = FALSE)
 
-chr <- Sys.getenv("chr")
+chrs <- Sys.getenv("chrs")
 suffix <- Sys.getenv("suffix")
-outdir <- paste0("rrbs_clean_data_",suffix)
-resultname <- paste0(outdir,"lmer-",chr,".RDS")
+outdir <- paste0("rrbs_clean_data_",suffix,"/")
+resultname <- paste0(outdir,"lmer.RDS")
 
-result <- readRDS(resultname)
+results <- range_dfs <- list()
+for (chr in chrs)
+{
+  results$chr <- readRDS(paste0(outdir,"lmer-",chr,".RDS"))
+  range_dfs$chr <- readRDS(paste0(outdir,"predictedMeth-",chr","_range_quality.RDS')
+}
+result <- results$chr1
+range_df <- range_dfs$chr1
+for (chr in chrs[-1])
+{
+  result <-
+}
 
-range_df <- readRDS('rrbs_clean_data_lmer/predictedMeth_range_quality.RDS')
 range_df$unit <- rownames(range_df)
-
 library(plyr)
 result <- join(result, range_df, by = 'unit', type = "left")
 result$padj <- p.adjust(result$`SUA:Pr(>|t|)`, method = 'fdr')

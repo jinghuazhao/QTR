@@ -28,13 +28,15 @@ dir.create("rrbs_clean_data")
 sets <- list()
 for (i in 1:13) sets[[i]] <- setRead(((i-1)*10+1):(i*10))
 sets[[14]] <-setRead(131:134)
-save(sets,file="rrbs.rda")
+save(sets,file="rrbs_clean_data/rrbs.rda")
+# load("rrbs_clean_data/rrbs.rda")
 rrbs <- sets[[1]]
 for (i in 2:14) rrbs <- combine(rrbs,sets[[i]])
-saveRDS(rrbs, "rrbs_clean_data_lmer/rrbs.RDS")
+saveRDS(rrbs, "rrbs_clean_data/rrbs.RDS")
 
+# rrbs <- readRDS("rrbs_clean_data/rrbs.RDS")
 # pdf('rrbs_covBoxplots.pdf', paper = 'a4r', width = 0, height = 0)
-png("rrbs_clean_data_lmer/rrbs_covBoxplots.png", width = 900, height = 480, units = 'px', pointsize = 12)
+png("rrbs_clean_data/rrbs_covBoxplots.png", width = 900, height = 480, units = 'px', pointsize = 12)
 covBoxplots(rrbs, col = "cornflowerblue", las = 2)
 dev.off()
 
