@@ -22,7 +22,7 @@ It becomes apparent that beyond certain number of samples, BiSeq suddenly has in
 
 ### I. Chromosome partition
 
-[BiSeq.sh](BiSeq.sh) implements data partition by chromosome followed by analysis.
+[BiSeq.sh](BiSeq.sh) implements data partition by chromosome followed by analysis. In fact, scripts_lmer now contains revised program bearing the original name above.
 
 ### II. Sample partition
 
