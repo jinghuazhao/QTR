@@ -1,6 +1,6 @@
 ## The BiSeq pipeline
 
-These inherits the following R programs from the parental directory,
+This pipeline inherits the following R programs from the parental directory,
 ```
 1_BiSeq.R
 2_format_methylation_data.R
