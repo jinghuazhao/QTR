@@ -12,7 +12,7 @@ This pipeline inherits the following R programs from BiSeq/ at the parental dire
 ```
 which has working directory `rrbs_clean_data/`. It is also assumed that combined_pvalues package is available from cuurent directory.
 
-From these, two experimets were derived based on the software package lmer and matie whose source programs are contained in **scripts_lmer/** and **scripts_matie/** working directories,  **rrbs_clean_data_lmer/** and **rrbs_clean_data_matie/**, respectively.
+From these, two experimets were derived based on the software package lmer and matie whose source programs are contained in **scripts_lmer/** and **scripts_matie/** with working directories,  **rrbs_clean_data_lmer/** and **rrbs_clean_data_matie/**, respectively.
 
 ## The BiSeq problem and solutions
 
