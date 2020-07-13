@@ -1,15 +1,16 @@
 ## The BiSeq pipeline
 
 This pipeline inherits the following R programs from BiSeq/ at the parental directory,
-```
-1_BiSeq.R
-2_format_methylation_data.R
-3_quality_control_and_refactor.R including refactor_modify.R
-4_analysis_lmer.R
-5_read_result.R
-6_get_annotation.R
-8_sigplot.R
-```
+
+1. [1_BiSeq.R](1_BiSeq.R)
+2. [2_format_methylation_data.R](2_format_methylation_data.R)
+3. [3_quality_control_and_refactor.R](3_quality_control_and_refactor.R) including [refactor_modify.R](refactor_modify.R)
+4. [4_analysis_lmer.R](4_analysis_lmer.R)
+5. [5_read_result.R](5_read_result.R)
+6. [6_get_annotation.R](6_get_annotation.R)
+7. [7_combined-pvalues.sh](7_combined-pvalues.sh)
+8. [8_sigplot.R](8_sigplot.R)
+
 which has working directory `rrbs_clean_data/`. It is also assumed that combined_pvalues package is available from cuurent directory.
 
 From these, two experimets were derived based on the software package lmer and matie whose source programs are contained in **scripts_lmer/** and **scripts_matie/** with working directories,  **rrbs_clean_data_lmer/** and **rrbs_clean_data_matie/**, respectively.
