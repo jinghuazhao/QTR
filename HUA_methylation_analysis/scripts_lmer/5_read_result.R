@@ -3,31 +3,35 @@ getwd()
 
 options(stringsAsFactors = FALSE)
 
-chrs <- Sys.getenv("chrs")
 suffix <- Sys.getenv("suffix")
 outdir <- paste0("rrbs_clean_data_",suffix,"/")
-resultname <- paste0(outdir,"lmer.RDS")
 
-results <- range_dfs <- list()
+list_files <- list.files(outdir,"lmer")
+chrs <- gsub("lmer-","",gsub(".RDS","",list_files))
+results <- range_df <- list()
+i <- 1
 for (chr in chrs)
 {
-  results$chr <- readRDS(paste0(outdir,"lmer-",chr,".RDS"))
-  range_dfs$chr <- readRDS(paste0(outdir,"predictedMeth-",chr","_range_quality.RDS')
+  resultname <- paste0(outdir,"lmer-",chr,".RDS")
+  rangename <- paste0(outdir,"predictedMeth-",chr,"_range_quality.RDS")
+  results[[i]] <- readRDS(resultname)
+  range_df[[i]] <- readRDS(rangename)
+  range_df[[i]]$unit <- rownames(range_df[[i]])
+  i <- i+1
 }
-result <- results$chr1
-range_df <- range_dfs$chr1
+library(plyr)
+result <- join(results[[1]], range_df[[1]], by = 'unit', type = "left")
+i <- 1
 for (chr in chrs[-1])
 {
-  result <-
+  result_range_df <- join(results[[i]], range_df[[i]], by = 'unit', type = "left")
+  result <- rbind(result,result_range_df)
+  i <- i+1
 }
-
-range_df$unit <- rownames(range_df)
-library(plyr)
-result <- join(result, range_df, by = 'unit', type = "left")
 result$padj <- p.adjust(result$`CpG:Pr(>|t|)`, method = 'fdr')
 result$seqnames <- as.character(result$seqnames)
 result <- result[(result$seqnames %in% paste0('chr', 1:22)), ]
-saveRDS(result, paste0(outdir,"result-",chr,"_range.RDS")
+saveRDS(result, paste0(outdir,"result_range.RDS"))
 
 library(openxlsx)
 sigresult <- result[result$seqnames %in% paste0('chr', 1:22), ]
@@ -36,8 +40,8 @@ sigresult <- sigresult[sigresult$'CpG:Pr(>|t|)' < 0.05, ]
 sigresult <- sigresult[order(sigresult$'CpG:Pr(>|t|)'), ]
 sigresult <- sigresult[, c('unit', 'seqnames', 'start', 'CpG:Pr(>|t|)', 'CpG:Estimate', 'padj')]
 colnames(sigresult) <- c('id_row_number', 'Chromosome', 'Position', 'pvalue', 'effectsize', 'padj')
-saveRDS(sigresult, file = paste0(outdir,"sigresult-",chr,".RDS")
-write.xlsx(sigresult, file = paste0(outdir,"sigresult-",chr,".xlsx")
+saveRDS(sigresult, file = paste0(outdir,"sigresult-",chr,".RDS"))
+write.xlsx(sigresult, file = paste0(outdir,"sigresult-",chr,".xlsx"))
 
 p_cut_v <- c(0.001, 0.01, 0.05, 1)
 
@@ -79,4 +83,4 @@ file.rename('Circular-Manhattan.p-value.pdf', 'rrbs_clean_data_lmer/Circular-Man
 CMplot(cmplotdata,plot.type="q",threshold=1e-6,
        signal.pch=19,signal.cex=1,box=FALSE,multracks=
          FALSE,memo="",dpi=600,file = "pdf",file.output=TRUE,verbose=TRUE)
-file.rename('QQplot.p-value.pdf', paste0(outdir,"QQplot_p-value.pdf")
+file.rename('QQplot.p-value.pdf', paste0(outdir,"QQplot_p-value.pdf"))

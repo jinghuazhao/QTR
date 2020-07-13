@@ -1,12 +1,12 @@
-setwd("/media/data/project/HUA_methylation_analysis/")
+# setwd("/media/data/project/HUA_methylation_analysis/")
 getwd()
 
 outdir <- "rrbs_clean_data_lmer/"
 range_result_name <- paste0(outdir,"result_range.RDS")
 
-if (!requireNamespace("BiocManager", quietly = TRUE))
-install.packages("BiocManager")
-BiocManager::install("biomaRt", version = "3.8")
+# if (!requireNamespace("BiocManager", quietly = TRUE))
+# install.packages("BiocManager")
+# BiocManager::install("biomaRt", version = "3.8")
 
 result <- readRDS(range_result_name)
 result$seqnames <- gsub('chr', '', result$seqnames)

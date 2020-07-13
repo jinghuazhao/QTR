@@ -1,7 +1,8 @@
 options(stringsAsFactors = FALSE)
 
 result <- read.table('combined-pvalues/data/regions.sig.bed')
-outdir <- "rrbs_clean_data_lmer/"
+suffix <- Sys.getenv("suffix")
+outdir <- paste0("rrbs_clean_data_x",suffix,"/")
 
 sigresult <- result[result$V7 < 0.1, ]
 sigresult <- sigresult[order(sigresult$V7), ]
