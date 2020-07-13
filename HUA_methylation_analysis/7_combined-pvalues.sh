@@ -1,6 +1,7 @@
 cd combined-pvalues
 
 function comb()
+# comb-p pipeline -c 4 --seed 1e-1 --dist 500 -p data --region-filter-p 0.1 --anno mm9 data/pvals.bed
 {
   comb-p acf -d 1:500:50 -c 4 data/pvals.bed > data/acf.txt
   comb-p slk --acf data/acf.txt -c 4 data/pvals.bed > data/pvals.acf.bed
