@@ -40,8 +40,8 @@ sigresult <- sigresult[sigresult$'CpG:Pr(>|t|)' < 0.05, ]
 sigresult <- sigresult[order(sigresult$'CpG:Pr(>|t|)'), ]
 sigresult <- sigresult[, c('unit', 'seqnames', 'start', 'CpG:Pr(>|t|)', 'CpG:Estimate', 'padj')]
 colnames(sigresult) <- c('id_row_number', 'Chromosome', 'Position', 'pvalue', 'effectsize', 'padj')
-saveRDS(sigresult, file = paste0(outdir,"sigresult-",chr,".RDS"))
-write.xlsx(sigresult, file = paste0(outdir,"sigresult-",chr,".xlsx"))
+saveRDS(sigresult, file = paste0(outdir,"sigresult.RDS"))
+write.xlsx(sigresult, file = paste0(outdir,"sigresult.xlsx"))
 
 p_cut_v <- c(0.001, 0.01, 0.05, 1)
 

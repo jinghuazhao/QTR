@@ -1,7 +1,8 @@
 # setwd("/media/data/project/HUA_methylation_analysis/")
 getwd()
 
-outdir <- "rrbs_clean_data_lmer/"
+suffix <- Sys.getenv("suffix")
+outdir <- paste0("rrbs_clean_data_",suffix,"/")
 range_result_name <- paste0(outdir,"result_range.RDS")
 
 # if (!requireNamespace("BiocManager", quietly = TRUE))
@@ -69,16 +70,16 @@ saveRDS(result_anno, result_anno_filename)
 result_anno_csv <- gsub('.RDS', paste0('_', id_type, '.csv'), range_result_name)
 write.csv(result_anno, file = result_anno_csv, row.names = FALSE)
 
-sigresult <- readRDS('rrbs_clean_data_lmer/sigresult.RDS')
-anno <- readRDS('rrbs_clean_data_lmer/result_range_ensembl_gene_id.RDS')
+sigresult <- readRDS(paste0(outdir,"sigresult.RDS"))
+anno <- readRDS(paste0(outdir,"result_range_ensembl_gene_id.RDS"))
 colnames(sigresult) <- c('unit', 'Chromosome', 'Position', 'pvalue', 'effectsize', 'padj')
 anno <- anno[, c('unit', "ensembl_gene_id", "hgnc_symbol", "up_bp", "up_ensembl_gene_id", "up_hgnc_symbol","down_bp", "down_ensembl_gene_id", "down_hgnc_symbol" )]
 library(plyr)
 sigresult <- join(sigresult, anno)
-write.csv(sigresult, file = "rrbs_clean_data_lmer/sigresult_anno.csv", row.names = FALSE)
+write.csv(sigresult, file = paste0(outdir,"sigresult_anno.csv"), row.names = FALSE)
 
-sigresult <- readRDS('rrbs_clean_data_lmer/sigresult.RDS')
-anno <- readRDS('rrbs_clean_data_lmer/result_range_entrezgene_id.RDS')
+sigresult <- readRDS(paste0(outdir,"sigresult.RDS"))
+anno <- readRDS(paste0(outdir,"result_range_entrezgene_id.RDS"))
 colnames(sigresult) <- c('unit', 'Chromosome', 'Position', 'pvalue', 'effectsize', 'padj')
 anno <- anno[, c('unit', "entrezgene_id")]
 library(plyr)
