@@ -10,10 +10,10 @@ numberOfSignificance <- nrow(sigresult)
 
 library(xtable)
 sigresult_tex <- xtable(sigresult)
-print(sigresult_tex, file = "rrbs_clean_data_lmer/sigDMR.tex")
-write.csv(sigresult, file = "rrbs_clean_data_lmer/sigDMR.csv", row.names = FALSE)
+print(sigresult_tex, file = paste0(outdir,"sigDMR.tex"))
+write.csv(sigresult, file = paste0(outdir,"sigDMR.csv"), row.names = FALSE)
 
-resultname <- 'rrbs_clean_data_lmer/result_range.RDS'
+resultname <- paste0(outdir, "result_range.RDS")
 result <- readRDS(resultname)
 
 cpgresult <- result
@@ -21,7 +21,7 @@ cpgresult <- result
 library(ggplot2)
 
 for(i in 1:nrow(sigresult)) {
-  pdf(file = paste0('rrbs_clean_data_lmer/DMR_', i, '.pdf'), width = 8.3, height = 4)
+  pdf(file = paste0(outdir,'DMR_', i, '.pdf'), width = 8.3, height = 4)
   plotdata1 <- sigresult[i, ]
   plotdata2 <- cpgresult[(cpgresult$seqnames == plotdata1$V1) & (cpgresult$start >= plotdata1$V2) & (cpgresult$end <= plotdata1$V3), ]
   print(ggplot(data = plotdata2, mapping = aes(y = plotdata2$`systolic:Estimate`, x = plotdata2$start)) + geom_smooth() + geom_point() + xlab('BP') + ylab('Coefficient') + ggtitle(paste0('DMR ', plotdata1$V1, ':', plotdata1$V2, '-', plotdata1$V3)) + theme_bw())
@@ -36,7 +36,7 @@ fmt_dcimals <- function(decimals=0){
   function(x) sprintf(paste0("%-", decimals, "s"), x)
 }
 
-pdf(file = paste0("rrbs_clean_data_lmer/DMRs.pdf"), width = 10, height = 16.5)
+pdf(file = paste0(outdir,"DMRs.pdf"), width = 10, height = 16.5)
 col_per_page <- 2
 row_per_page <- 6
 num_per_page <- col_per_page * row_per_page
@@ -67,7 +67,7 @@ fmt_dcimals <- function(decimals=0){
   # axis labels with a given number of decimals
   function(x) sprintf(paste0("%-", decimals, "s"), x)
 }
-pdf(file = paste0('rrbs_clean_data_lmer/DMRsr.pdf'), width = 15, height = 11.7)
+pdf(file = paste0(outdir,'DMRsr.pdf'), width = 15, height = 11.7)
 col_per_page <- 3
 row_per_page <- 4
 num_per_page <- col_per_page * row_per_page

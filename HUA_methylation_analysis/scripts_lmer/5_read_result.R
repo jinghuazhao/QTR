@@ -50,7 +50,6 @@ for(p_cut in p_cut_v) {
 	sigfilename <- paste0("lmer-",chr,"_", p_cut, '.xlsx')
 	sigfile <- result[result$`CpG:Pr(>|t|)` < p_cut, ]
 	write.xlsx(sigfile, sigfilename)
-
 	bedfilename <- paste0(outdir,"lmer-",chr, "_", p_cut, '.BED')
 	bedfile <- result[result$`CpG:Pr(>|t|)` < p_cut, c('seqnames', 'start', 'end', 'unit')]
 	write.table(bedfile, bedfilename, sep = ' ', row.names = FALSE, col.names = FALSE, quote = FALSE)
@@ -82,5 +81,5 @@ CMplot(cmplotdata,plot.type="c",chr.labels=paste("chr",c(1:22),sep=""),r=0.4,cir
 file.rename('Circular-Manhattan.p-value.pdf', 'rrbs_clean_data_lmer/Circular-Manhattan_p-value.pdf')
 CMplot(cmplotdata,plot.type="q",threshold=1e-6,
        signal.pch=19,signal.cex=1,box=FALSE,multracks=
-         FALSE,memo="",dpi=600,file = "pdf",file.output=TRUE,verbose=TRUE)
+       FALSE,memo="",dpi=600,file = "pdf",file.output=TRUE,verbose=TRUE)
 file.rename('QQplot.p-value.pdf', paste0(outdir,"QQplot_p-value.pdf"))
