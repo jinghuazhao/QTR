@@ -17,6 +17,7 @@ git add BiSeq hearing HUA_methylation_analysis/scripts* \
     HUA_methylation_analysis/BiSeq.* \
     HUA_methylation_analysis/refactor_modify.R
     HUA_methylation_analysis/?_*.R
+    HUA_methylation_analysis/?_*.sh
 git commit -m "Code"
 git add P.Rmd P.html P.pdf
 git commit -m "P values"
