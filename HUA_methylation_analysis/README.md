@@ -4,7 +4,7 @@ This pipeline inherits the following R programs from BiSeq/ at the parental dire
 ```
 1_BiSeq.R
 2_format_methylation_data.R
-3_quality_control_and_refactor.R
+3_quality_control_and_refactor.R including refactor_modify.R
 4_analysis_lmer.R
 5_read_result.R
 6_get_annotation.R
