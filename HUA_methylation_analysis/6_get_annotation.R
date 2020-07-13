@@ -3,9 +3,9 @@ getwd()
 
 range_result_name <- 'rrbs_clean_data/result_range.RDS'
 
-if (!requireNamespace("BiocManager", quietly = TRUE))
-install.packages("BiocManager")
-BiocManager::install("biomaRt", version = "3.8")
+# if (!requireNamespace("BiocManager", quietly = TRUE))
+# install.packages("BiocManager")
+# BiocManager::install("biomaRt", version = "3.8")
 
 result <- readRDS(range_result_name)
 result$seqnames <- gsub('chr', '', result$seqnames)

@@ -24,17 +24,17 @@ for (chr in chrs[-1])
 range_df$unit <- rownames(range_df)
 library(plyr)
 result <- join(result, range_df, by = 'unit', type = "left")
-result$padj <- p.adjust(result$`SUA:Pr(>|t|)`, method = 'fdr')
+result$padj <- p.adjust(result$`CpG:Pr(>|t|)`, method = 'fdr')
 result$seqnames <- as.character(result$seqnames)
 result <- result[(result$seqnames %in% paste0('chr', 1:22)), ]
 saveRDS(result, paste0(outdir,"result-",chr,"_range.RDS")
 
 library(openxlsx)
 sigresult <- result[result$seqnames %in% paste0('chr', 1:22), ]
-sigresult <- sigresult[, c('unit', 'seqnames', 'start', 'end', 'SUA:Pr(>|t|)', 'SUA:Estimate', 'padj')]
-sigresult <- sigresult[sigresult$'SUA:Pr(>|t|)' < 0.05, ]
-sigresult <- sigresult[order(sigresult$'SUA:Pr(>|t|)'), ]
-sigresult <- sigresult[, c('unit', 'seqnames', 'start', 'SUA:Pr(>|t|)', 'SUA:Estimate', 'padj')]
+sigresult <- sigresult[, c('unit', 'seqnames', 'start', 'end', 'CpG:Pr(>|t|)', 'CpG:Estimate', 'padj')]
+sigresult <- sigresult[sigresult$'CpG:Pr(>|t|)' < 0.05, ]
+sigresult <- sigresult[order(sigresult$'CpG:Pr(>|t|)'), ]
+sigresult <- sigresult[, c('unit', 'seqnames', 'start', 'CpG:Pr(>|t|)', 'CpG:Estimate', 'padj')]
 colnames(sigresult) <- c('id_row_number', 'Chromosome', 'Position', 'pvalue', 'effectsize', 'padj')
 saveRDS(sigresult, file = paste0(outdir,"sigresult-",chr,".RDS")
 write.xlsx(sigresult, file = paste0(outdir,"sigresult-",chr,".xlsx")
@@ -44,17 +44,17 @@ p_cut_v <- c(0.001, 0.01, 0.05, 1)
 library(openxlsx)
 for(p_cut in p_cut_v) {
 	sigfilename <- paste0("lmer-",chr,"_", p_cut, '.xlsx')
-	sigfile <- result[result$`SUA:Pr(>|t|)` < p_cut, ]
+	sigfile <- result[result$`CpG:Pr(>|t|)` < p_cut, ]
 	write.xlsx(sigfile, sigfilename)
 
 	bedfilename <- paste0(outdir,"lmer-",chr, "_", p_cut, '.BED')
-	bedfile <- result[result$`SUA:Pr(>|t|)` < p_cut, c('seqnames', 'start', 'end', 'unit')]
+	bedfile <- result[result$`CpG:Pr(>|t|)` < p_cut, c('seqnames', 'start', 'end', 'unit')]
 	write.table(bedfile, bedfilename, sep = ' ', row.names = FALSE, col.names = FALSE, quote = FALSE)
 }
 
 dir.create('combined-pvalues/data')
 bedfilename <- 'combined-pvalues/data/pvals.bed'
-bedfile <- result[(result$seqnames %in% paste0('chr', 1:22)), c('seqnames', 'start', 'end', 'SUA:Pr(>|t|)')]
+bedfile <- result[(result$seqnames %in% paste0('chr', 1:22)), c('seqnames', 'start', 'end', 'CpG:Pr(>|t|)')]
 bedfile$end <- bedfile$start + 1
 bedfile$seqnames <- as.character(bedfile$seqnames)
 # bedfile$seqnames <- factor(bedfile$seqnames, paste0('chr', 1:22))
@@ -65,7 +65,7 @@ write.table(bedfile, bedfilename, sep = '\t', row.names = FALSE, col.names = TRU
 
 library(CMplot)
 cmplotdata <- result[result$seqnames %in% paste0('chr', 1:22), ]
-cmplotdata <- cmplotdata[, c('unit', 'seqnames', 'start', 'SUA:Pr(>|t|)')]
+cmplotdata <- cmplotdata[, c('unit', 'seqnames', 'start', 'CpG:Pr(>|t|)')]
 colnames(cmplotdata) <- c('SNP', 'Chromosome', 'Position', 'p-value')
 cmplotdata$SNP <- as.factor(cmplotdata$SNP)
 cmplotdata$Chromosome <- as.character(cmplotdata$Chromosome)
