@@ -1,4 +1,4 @@
-# 12-7-2020 JHZ
+# 17-7-2020 JHZ
 
 function P()
 {
@@ -18,6 +18,7 @@ git add BiSeq hearing HUA_methylation_analysis/scripts* \
     HUA_methylation_analysis/refactor_modify.R \
     HUA_methylation_analysis/?_*.R \
     HUA_methylation_analysis/?_*.sh
+    HUA_methylation_analysis/lftp.sh
 git commit -m "Code"
 git add P.Rmd P.html P.pdf
 git commit -m "P values"
