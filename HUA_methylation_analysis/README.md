@@ -29,7 +29,7 @@ It becomes apparent that beyond certain number of samples, BiSeq suddenly has in
 
 1. Work in batches and then combine them.
 
-[BiSeq.R](BiSeq.R) replaces 1_BiSeq.R in both experiments on *lmer* and *matie*. It handles the triplet with suffexes as 1a2a,1b3b,2c3c rather than a sequence of numbers.
+[BiSeq.R](BiSeq.R) replaces 1_BiSeq.R in experiments on both *lmer* and *matie*. It handles the triplet with suffexes as 1a2a,1b3b,2c3c rather than a sequence of numbers.
 
 When R crashes, one can still save a list of BSraw objects that can be loaded again from a new session of R and retry, which turned to be successful.
 
