@@ -5,7 +5,7 @@ export prefix=CpG_context_Human_
 export suffix=_good_1_val_1_bismark_bt2_pe.bismark.cov.gz
 export dest=BiSeq_cleaned
 
-if [ ! -f ${dest} ]; then mkdir ${dest}; fi
+if [ ! -d ${dest} ]; then mkdir ${dest}; fi
 
 for n in $(ls ${src} | sed 's/'"${prefix}"'//;s/'"${suffix}"'//')
 do
