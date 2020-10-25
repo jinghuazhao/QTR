@@ -17,8 +17,8 @@ git add BiSeq hearing HUA_methylation_analysis/scripts* \
     HUA_methylation_analysis/BiSeq.* \
     HUA_methylation_analysis/refactor_modify.R \
     HUA_methylation_analysis/?_*.R \
-    HUA_methylation_analysis/?_*.sh
-    HUA_methylation_analysis/lftp.sh
+    HUA_methylation_analysis/?_*.sh \
+    HUA_methylation_analysis/lftp.sh \
     depression_EWAS/init.sh
 git commit -m "Code"
 git add P.Rmd P.html P.pdf
