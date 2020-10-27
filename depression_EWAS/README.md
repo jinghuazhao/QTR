@@ -1,6 +1,6 @@
 ## NOTE
 
-Script [init.sh](init.sh) is used to generate files for chr1-22,X,Y only at BiSeq_cleaned.
+Script [init.sh](init.sh) is used to generate files for chr1-22,M,X,Y only at BiSeq_cleaned.
 
 ### Whole-genome version
 
