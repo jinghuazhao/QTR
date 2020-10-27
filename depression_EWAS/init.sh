@@ -10,7 +10,7 @@ if [ ! -d ${dest} ]; then mkdir ${dest}; fi
 for n in $(ls ${src} | sed 's/'"${prefix}"'//;s/'"${suffix}"'//')
 do
   echo ${src}/${prefix}${n}${suffix}
-  zcat ${src}/${prefix}${n}${suffix} | awk '$1~/^chr[0-9]$|^chr[0-9][0-9]$|chrX|chrY/' | gzip -f > ${dest}/${n}.gz
+  zcat ${src}/${prefix}${n}${suffix} | awk '$1~/^chr[0-9]$|^chr[0-9][0-9]$|chrX|chrY|chrM/' | gzip -f > ${dest}/${n}.gz
 done
 
 # more sophisticated
