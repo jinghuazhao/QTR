@@ -27,7 +27,7 @@ bm_group <- bm_phen[match(bm_ids, bm_phen$no), "depression_score_level"]
 bm_group <- as.factor(bm_group)
 
 rrbs <- readBismark(bm_files, colData = DataFrame(row.names = bm_ids, group = bm_group))
-dir.create(outdir)
+if(!dir.exists(outdir)) dir.create(outdir)
 saveRDS(rrbs, rrbs_file)
 
 # pdf('rrbs_covBoxplots.pdf', paper = 'a4r', width = 0, height = 0)
