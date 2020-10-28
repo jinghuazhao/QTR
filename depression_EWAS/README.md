@@ -8,4 +8,7 @@ It is then necessary to change the directory name BiSeq to BiSeq_cleaned in `1_B
 
 ### Partition by chromosome
 
-This is achieved with parition function inside [BiSeq.sh](BiSeq.sh) and necessary change in `depression_scripts_chromosomes_lmer/1_BiSeq.R`.
+This is achieved with parition function inside [BiSeq.sh](BiSeq.sh) and necessary change in `depression_scripts_chromosomes_lmer/` for
+* `1_BiSeq.R`
+* `3_quality_control_and_refactor.R`.
+* `8_sigplot.R` as there was a bug with directory name.
