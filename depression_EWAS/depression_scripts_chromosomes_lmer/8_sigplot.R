@@ -2,7 +2,7 @@ options(stringsAsFactors = FALSE)
 
 result <- read.table('combined-pvalues/data/regions.sig.bed')
 suffix <- Sys.getenv("suffix")
-outdir <- paste0("rrbs_clean_data_x",suffix,"/")
+outdir <- paste0("rrbs_clean_data_",suffix,"/")
 
 sigresult <- result[result$V7 < 0.1, ]
 sigresult <- sigresult[order(sigresult$V7), ]
