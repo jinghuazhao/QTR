@@ -55,7 +55,7 @@ for(p_cut in p_cut_v) {
   write.table(bedfile, bedfilename, sep = ' ', row.names = FALSE, col.names = FALSE, quote = FALSE)
 }
 
-dir.create('combined-pvalues/data')
+if (!exists("combined-pvalues/data")) dir.create('combined-pvalues/data')
 bedfilename <- 'combined-pvalues/data/pvals.bed'
 bedfile <- result[(result$seqnames %in% paste0('chr', 1:22)), c('seqnames', 'start', 'end', 'CpG:Pr(>|t|)')]
 bedfile$end <- bedfile$start + 1
